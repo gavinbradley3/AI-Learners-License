@@ -172,6 +172,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q1",
       moduleId: "module3",
+      pattern: "evidence_check",
       stem: "AI gives an exact statistic for your presentation.",
       options: [
         { text: "Use it immediately", feedback: "Specific does not mean verified." },
@@ -190,6 +191,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q2",
       moduleId: "module3",
+      pattern: "find_the_problem",
       stem: "What is an AI hallucination?",
       options: [
         {
@@ -220,6 +222,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q3",
       moduleId: "module3",
+      pattern: "best_next_move",
       stem: "AI provides a book quotation and page number. You cannot find the quotation in the book.",
       options: [
         { text: "Submit it because AI probably knows", feedback: "AI can invent quotations." },
@@ -241,6 +244,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q4",
       moduleId: "module3",
+      pattern: "evidence_check",
       stem: "AI gives you three websites for a research project.",
       options: [
         { text: "Put all three straight into your bibliography", feedback: "Generated citations can be wrong." },
@@ -262,6 +266,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q5",
       moduleId: "module3",
+      pattern: "best_next_move",
       stem: "AI gives an answer that strongly supports only one side of a controversial issue.",
       options: [
         { text: "“Can you make this answer longer and more detailed?”", feedback: "Length does not fix bias." },
@@ -286,6 +291,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q6",
       moduleId: "module3",
+      pattern: "find_the_problem",
       stem: "AI answers your question differently twice.",
       options: [
         {
@@ -316,6 +322,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q7",
       moduleId: "module3",
+      pattern: "compare",
       stem: "Which information most needs independent checking?",
       options: [
         {
@@ -343,6 +350,7 @@ export const module3: ModuleContent = {
     {
       id: "M3-Q8",
       moduleId: "module3",
+      pattern: "evidence_check",
       stem: "You ask AI, “Are you sure this fact is correct?” It says, “Yes, absolutely.”",
       options: [
         { text: "It is confirmed", feedback: "AI repeating itself isn't the same as an outside source confirming the claim." },

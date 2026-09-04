@@ -4,6 +4,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F1",
     category: "support",
+    pattern: "boundary_check",
     stem: "Teacher allows AI feedback after you write your own draft.",
     context: [{ quote: "Tell me which part of my argument is least convincing and explain why. Don't rewrite it." }],
     options: [
@@ -23,6 +24,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F2",
     category: "support",
+    pattern: "boundary_check",
     stem: "Design teacher says:",
     context: [
       { quote: "I want to see the ideas you can generate yourself. Do not use AI during brainstorming." },
@@ -57,6 +59,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F3",
     category: "permission",
+    pattern: "boundary_check",
     stem: "Teacher says:",
     context: [
       { quote: "You may use AI to brainstorm possible documentary topics, but the research and script must be your own." },
@@ -79,6 +82,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F4",
     category: "tutor",
+    pattern: "best_next_move",
     stem: "You tried a math problem twice and cannot figure out your next step. AI homework help is allowed.",
     options: [
       {
@@ -109,6 +113,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F5",
     category: "verification",
+    pattern: "evidence_check",
     stem: "AI provides:",
     context: [{ quote: "Chen, Melissa. Digital Learning in Canadian Schools. Alberta Education Research Journal, 2025." }, "It looks believable."],
     options: [
@@ -140,6 +145,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F6",
     category: "support",
+    pattern: "find_the_problem",
     stem: "AI writes your full reading response. You rewrite several sentences and add your own opening sentence.",
     options: [
       {
@@ -170,18 +176,23 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F7",
     category: "tutor",
-    stem: "You want to prepare for a science quiz.",
+    pattern: "prompt_repair",
+    stem: "You are studying for a science quiz and type this. Which change gives you real practice?",
+    context: [{ quote: "Tell me everything about cells." }],
     options: [
       {
-        text: "Ask AI to write out answers for you to read over",
-        feedback: "Reading answers gives you less practice than answering yourself.",
+        text: "“Tell me everything about cells in a short summary.”",
+        feedback: "A shorter summary is still something you read instead of something you recall.",
       },
       {
-        text: "Ask AI to quiz you one question at a time",
+        text: "“Quiz me on cells one question at a time and wait for my answer.”",
         feedback: "Answering from memory makes you practise what you will need to do later.",
       },
-      { text: "Ask AI to predict what mark you'll get", feedback: "Predicting a mark does not help you study." },
-      { text: "Ask AI to take the quiz for you", feedback: "That removes the practice entirely." },
+      {
+        text: "“Tell me the parts of a cell most likely to be on the quiz.”",
+        feedback: "AI does not know what your teacher chose to put on the quiz.",
+      },
+      { text: "“Write out the answers to my cell review questions.”", feedback: "That removes the practice entirely." },
     ],
     correctIndex: 1,
     concept: "retrieval_practice",
@@ -194,6 +205,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F8",
     category: "verification",
+    pattern: "evidence_check",
     stem: "AI says:",
     context: [{ quote: "Exactly 71.4% of Canada's freshwater is located in Ontario." }, "It gives no source. You want the statistic on a slide."],
     options: [
@@ -225,6 +237,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F9",
     category: "privacy",
+    pattern: "best_next_move",
     stem: "A classmate sends you a private message saying they are struggling with a friendship. You want advice.",
     options: [
       {
@@ -255,6 +268,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F10",
     category: "permission",
+    pattern: "boundary_check",
     stem: "Teacher allows AI to help organize a presentation but says all ideas and research must be yours.",
     options: [
       {
@@ -279,6 +293,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F11",
     category: "verification",
+    pattern: "evidence_check",
     stem: "AI gives one answer. Your teacher's textbook gives another.",
     options: [
       {
@@ -309,6 +324,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F12",
     category: "tutor",
+    pattern: "boundary_check",
     stem: "Your teacher allows learning supports. You do not understand the word “consequence” in an article. You ask AI to explain the word with a simple example.",
     options: [
       { text: "This can support understanding", feedback: "Understanding a word can help you access the learning without replacing your response." },
@@ -327,6 +343,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F13",
     category: "support",
+    pattern: "find_the_problem",
     stem: "The assignment is specifically assessing your ability to find and evaluate reliable sources.",
     context: [{ quote: "Find the best three sources for me and tell me which ones are reliable." }],
     options: [
@@ -358,6 +375,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F14",
     category: "tutor",
+    pattern: "boundary_check",
     stem: "Teacher has already given you five approved sources and allows AI as a reading support. You paste a difficult paragraph from one approved source and ask:",
     context: [{ quote: "Explain this paragraph in simpler language. Do not create my research notes." }],
     options: [
@@ -380,6 +398,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F15",
     category: "verification",
+    pattern: "evidence_check",
     stem: "AI gives you important health information that could affect a real decision.",
     options: [
       {
@@ -410,6 +429,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F16",
     category: "permission",
+    pattern: "need_more_info",
     stem: "Teacher says:",
     context: [{ quote: "You may use your usual classroom tools." }, "You are not sure whether that includes generative AI."],
     options: [
@@ -441,6 +461,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F17",
     category: "support",
+    pattern: "compare",
     stem: "Teacher allows spellcheck and grammar feedback but says your writing must remain your own.",
     options: [
       {
@@ -471,6 +492,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F18",
     category: "verification",
+    pattern: "find_the_problem",
     stem: "AI gives an explanation of a historical conflict that makes one side seem completely reasonable and barely mentions the other side.",
     options: [
       {
@@ -501,6 +523,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F19",
     category: "responsibility",
+    pattern: "find_the_problem",
     stem: "You waited until the night before a project is due. You ask AI to create the whole project because there is not enough time left.",
     options: [
       {
@@ -531,6 +554,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
   {
     id: "F20",
     category: "integrated",
+    pattern: "best_next_move",
     stem: "Teacher allows AI learning support. You wrote your own answer but are unsure whether your reasoning makes sense.",
     options: [
       {

@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { courseContent } from "./courseContent";
 import { selectFinalQuestions, selectModuleQuestions } from "../logic/quizEngine";
-import { MODULE_IDS } from "../types";
+import { MODULE_IDS, QUESTION_PATTERNS, type QuestionPattern } from "../types";
 
 /** Every question whose answer is scored: 5 pre-check, 4 x 8 module, 20 final. */
-function allScoredQuestions(): { id: string; optionTexts: string[]; correctIndex: number }[] {
+function allScoredQuestions(): { id: string; optionTexts: string[]; correctIndex: number; pattern?: QuestionPattern }[] {
   return [
     // Pre-check options are plain strings; quiz options carry their own feedback.
     ...courseContent.preCheck.map((q) => ({ id: q.id, optionTexts: [...q.options], correctIndex: q.correctIndex })),
@@ -13,12 +13,14 @@ function allScoredQuestions(): { id: string; optionTexts: string[]; correctIndex
         id: q.id,
         optionTexts: q.options.map((o) => o.text),
         correctIndex: q.correctIndex,
+        pattern: q.pattern,
       })),
     ),
     ...courseContent.finalBank.map((q) => ({
       id: q.id,
       optionTexts: q.options.map((o) => o.text),
       correctIndex: q.correctIndex,
+      pattern: q.pattern,
     })),
   ];
 }
@@ -127,6 +129,33 @@ describe("courseContent shape", () => {
     expect(pickTheLongestWorks / total, `${pickTheLongestWorks}/${total} questions`).toBeLessThan(0.15);
     // Some correct answers are legitimately more qualified, so this stays a ceiling, not parity.
     expect(longest / total, `${longest}/${total} questions`).toBeLessThan(0.6);
+  });
+
+  it("keeps every question bank off a single repeated thinking pattern", () => {
+    const tally = (patterns: QuestionPattern[]) => {
+      const counts = new Map<QuestionPattern, number>();
+      for (const p of patterns) counts.set(p, (counts.get(p) ?? 0) + 1);
+      return counts;
+    };
+
+    for (const id of MODULE_IDS) {
+      const counts = tally(courseContent.modules[id].quizBank.map((q) => q.pattern));
+      const [topPattern, topCount] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0];
+      expect(topCount, `${id} leans on "${topPattern}" for ${topCount} of 8 questions`).toBeLessThanOrEqual(4);
+      expect(counts.size, `${id} uses only ${counts.size} distinct patterns`).toBeGreaterThanOrEqual(3);
+    }
+
+    const finalCounts = tally(courseContent.finalBank.map((q) => q.pattern));
+    const finalTop = Math.max(...finalCounts.values());
+    expect(finalTop, `the final bank leans on one pattern for ${finalTop} of 20 questions`).toBeLessThanOrEqual(8);
+    expect(finalCounts.size, "the final bank should exercise most of the patterns").toBeGreaterThanOrEqual(5);
+  });
+
+  it("only tags questions with patterns the UI can label", () => {
+    for (const q of allScoredQuestions()) {
+      if (!q.pattern) continue; // pre-check questions are unscored practice and carry no pattern
+      expect(QUESTION_PATTERNS, `${q.id} has an unknown pattern`).toContain(q.pattern);
+    }
   });
 
   it("selects a real module attempt and a real final challenge without error", () => {

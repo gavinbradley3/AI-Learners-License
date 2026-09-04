@@ -183,6 +183,7 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q1",
       moduleId: "module2",
+      pattern: "best_next_move",
       stem: "You want to practise vocabulary.",
       options: [
         {
@@ -207,6 +208,7 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q2",
       moduleId: "module2",
+      pattern: "best_next_move",
       stem: "You do not understand a paragraph in your science textbook.",
       options: [
         {
@@ -231,6 +233,7 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q3",
       moduleId: "module2",
+      pattern: "compare",
       stem: "You want feedback on your writing without having AI rewrite it.",
       options: [
         {
@@ -261,6 +264,7 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q4",
       moduleId: "module2",
+      pattern: "boundary_check",
       stem: "You have no idea how to start a large project. AI use is allowed for planning.",
       options: [
         {
@@ -291,6 +295,7 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q5",
       moduleId: "module2",
+      pattern: "best_next_move",
       stem: "You have tried a math problem and are stuck.",
       options: [
         { text: "“Just answer it for me.”", feedback: "A full answer removes the exact problem-solving you're supposed to practise." },
@@ -315,20 +320,28 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q6",
       moduleId: "module2",
-      stem: "What makes this prompt useful? “Ask me three questions that will help me improve my project idea.”",
+      pattern: "prompt_repair",
+      stem: "This request will not help you improve your own project idea. Which change fixes it?",
+      context: [{ quote: "Give me a better project idea than mine." }],
       options: [
         {
-          text: "AI creates the project idea for you",
-          feedback: "This prompt doesn't ask AI to create anything — it asks for questions, not a finished project.",
+          text: "“Give me three better project ideas so I can choose one.”",
+          feedback: "Three AI ideas instead of one is still AI doing the idea work.",
         },
         {
-          text: "AI makes the decisions instead of you",
-          feedback: "Questions aren't decisions — you're still the one deciding what to do with them.",
+          text: "“Ask me three questions that would help me improve my idea.”",
+          feedback: "Questions can push your thinking without replacing it.",
         },
-        { text: "AI pushes you to think about your idea", feedback: "Questions can push your thinking without replacing it." },
-        { text: "AI guarantees your idea is a good one", feedback: "AI cannot guarantee quality." },
+        {
+          text: "“Rewrite my project idea so it sounds stronger.”",
+          feedback: "A rewrite hands your idea over to AI in different words.",
+        },
+        {
+          text: "“Tell me whether my project idea is good enough.”",
+          feedback: "A verdict doesn't tell you what to change, and AI cannot judge what your teacher wants.",
+        },
       ],
-      correctIndex: 2,
+      correctIndex: 1,
       concept: "coaching_questions",
       correction: {
         prompt: "Which keeps the idea yours?",
@@ -339,6 +352,7 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q7",
       moduleId: "module2",
+      pattern: "compare",
       stem: "Which study prompt gives you the most active practice?",
       options: [
         {
@@ -366,6 +380,7 @@ export const module2: ModuleContent = {
     {
       id: "M2-Q8",
       moduleId: "module2",
+      pattern: "compare",
       stem: "Which prompt best tells AI what kind of help you want?",
       options: [
         {

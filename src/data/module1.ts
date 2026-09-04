@@ -248,6 +248,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q1",
       moduleId: "module1",
+      pattern: "best_next_move",
       stem:
         "Liam has to explain how a food chain works. His teacher allows AI for learning help but says the explanation must be his own.",
       options: [
@@ -270,6 +271,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q2",
       moduleId: "module1",
+      pattern: "compare",
       stem: "Your teacher allows AI to help you understand homework, but you must solve the math yourself.",
       options: [
         { text: "“Just give me the final answer so I can write it down.”", feedback: "The answer removes the problem you are meant to solve." },
@@ -291,6 +293,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q3",
       moduleId: "module1",
+      pattern: "boundary_check",
       stem: "A teacher says AI may be used to brainstorm a speech topic.",
       options: [
         { text: "Brainstorming with AI is always cheating", feedback: "AI brainstorming is not automatically inappropriate when the teacher allows it." },
@@ -312,6 +315,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q4",
       moduleId: "module1",
+      pattern: "best_next_move",
       stem: "Your teacher says project ideas must be created without AI because idea generation is being assessed.",
       options: [
         { text: "Ask AI for ideas but don't tell anyone", feedback: "Hiding the AI use does not change the task." },
@@ -333,6 +337,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q5",
       moduleId: "module1",
+      pattern: "compare",
       stem: "Sofia wrote a paragraph. Her teacher allows AI feedback after the first draft.",
       options: [
         { text: "“Rewrite this so it gets a better mark.”", feedback: "AI would become the writer." },
@@ -354,6 +359,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q6",
       moduleId: "module1",
+      pattern: "find_the_problem",
       stem: "Why might asking AI for an answer immediately sometimes hurt learning?",
       options: [
         {
@@ -384,6 +390,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q7",
       moduleId: "module1",
+      pattern: "find_the_problem",
       stem: "Ethan asks AI to write his assignment, then changes several words before submitting it.",
       options: [
         { text: "It is now Ethan's thinking", feedback: "Editing something is different from creating the thinking yourself." },
@@ -408,6 +415,7 @@ export const module1: ModuleContent = {
     {
       id: "M1-Q8",
       moduleId: "module1",
+      pattern: "need_more_info",
       stem: "You want AI to help with an assignment, but your teacher has not explained whether AI is allowed.",
       options: [
         {

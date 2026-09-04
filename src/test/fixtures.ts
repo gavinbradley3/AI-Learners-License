@@ -1,4 +1,4 @@
-import type { FinalCategory, FinalQuestion, ModuleQuestion } from "../types";
+import { QUESTION_PATTERNS, type FinalCategory, type FinalQuestion, type ModuleQuestion } from "../types";
 
 /** Deterministic PRNG (mulberry32) so selection tests are reproducible. */
 export function seededRng(seed: number): () => number {
@@ -21,6 +21,7 @@ export function makeModuleBank(count = 8): ModuleQuestion[] {
   return Array.from({ length: count }, (_, i) => ({
     id: `M1-Q${i + 1}`,
     moduleId: "module1" as const,
+    pattern: QUESTION_PATTERNS[i % QUESTION_PATTERNS.length],
     stem: `Question stem ${i + 1}`,
     options: [
       makeOption("A"),
@@ -63,6 +64,7 @@ export function makeFinalBank(): FinalQuestion[] {
   ];
   return layout.map((category, i) => ({
     id: `F${i + 1}`,
+    pattern: QUESTION_PATTERNS[i % QUESTION_PATTERNS.length],
     stem: `Final stem ${i + 1}`,
     options: [
       makeOption("A"),

@@ -1,4 +1,4 @@
-import type { ModuleId } from "../types";
+import { PATTERN_LABELS, type ModuleId } from "../types";
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
 import { ProgressIndicator } from "../components/ProgressIndicator";
@@ -54,6 +54,7 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
         <div className="spaced-top">
           <QuestionCard
             key={question.id}
+            eyebrow={PATTERN_LABELS[question.pattern]}
             context={question.context}
             prompt={question.stem}
             options={question.options.map((o) => ({ text: o.text, feedback: o.feedback }))}

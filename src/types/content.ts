@@ -32,9 +32,45 @@ export interface CorrectionScenario {
   correctIndex: 0 | 1;
 }
 
+/**
+ * The thinking task a question asks for. Tagged on every scored question so the banks
+ * can be checked for monotony (see courseContent.test.ts) and so each card can name the
+ * task it is asking for, instead of 52 items that all read as "pick the best option".
+ */
+export type QuestionPattern =
+  | "compare"
+  | "best_next_move"
+  | "find_the_problem"
+  | "prompt_repair"
+  | "need_more_info"
+  | "evidence_check"
+  | "boundary_check";
+
+export const QUESTION_PATTERNS: readonly QuestionPattern[] = [
+  "compare",
+  "best_next_move",
+  "find_the_problem",
+  "prompt_repair",
+  "need_more_info",
+  "evidence_check",
+  "boundary_check",
+];
+
+/** Short label shown above the scenario so the student knows what kind of thinking is wanted. */
+export const PATTERN_LABELS: Record<QuestionPattern, string> = {
+  compare: "Compare",
+  best_next_move: "Best next move",
+  find_the_problem: "Find the problem",
+  prompt_repair: "Prompt repair",
+  need_more_info: "Need more information",
+  evidence_check: "Evidence check",
+  boundary_check: "Boundary check",
+};
+
 interface MasteryQuestionBase {
   id: string;
   stem: string;
+  pattern: QuestionPattern;
   context?: readonly ContextBlock[];
   options: FourOptions;
   correctIndex: 0 | 1 | 2 | 3;

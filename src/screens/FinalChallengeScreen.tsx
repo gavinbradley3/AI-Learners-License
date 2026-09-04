@@ -6,7 +6,7 @@ import { CorrectionCard } from "../components/CorrectionCard";
 import { finalIntro, finalRetry } from "../data/copy";
 import { useCourse } from "../state/CourseContext";
 import { useCourseActions } from "../state/useCourseActions";
-import type { FinalQuestion } from "../types";
+import { PATTERN_LABELS, type FinalQuestion } from "../types";
 
 function topMissedCategories(missedConcepts: readonly string[], bank: readonly FinalQuestion[]): string[] {
   const conceptToCategory = new Map(bank.map((q) => [q.concept, q.category] as const));
@@ -58,6 +58,7 @@ export function FinalChallengeScreen() {
         <div className="spaced-top">
           <QuestionCard
             key={question.id}
+            eyebrow={PATTERN_LABELS[question.pattern]}
             context={question.context}
             prompt={question.stem}
             options={question.options.map((o) => ({ text: o.text, feedback: o.feedback }))}

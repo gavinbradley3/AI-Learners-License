@@ -178,6 +178,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q1",
       moduleId: "module4",
+      pattern: "boundary_check",
       stem: "Your teacher allows AI for studying but not for completing the assignment.",
       options: [
         {
@@ -208,6 +209,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q2",
       moduleId: "module4",
+      pattern: "need_more_info",
       stem: "The instructions do not say whether AI may be used for brainstorming.",
       options: [
         { text: "Guess", feedback: "Guessing risks getting it wrong when you could have just asked." },
@@ -232,6 +234,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q3",
       moduleId: "module4",
+      pattern: "compare",
       stem: "Which should NOT be entered into an AI tool?",
       options: [
         { text: "“Explain gravity simply.”", feedback: "That's a general science question — nothing private about it." },
@@ -250,6 +253,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q4",
       moduleId: "module4",
+      pattern: "best_next_move",
       stem: "A classmate sends you a private photo.",
       options: [
         {
@@ -277,6 +281,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q5",
       moduleId: "module4",
+      pattern: "find_the_problem",
       stem: "AI gives you incorrect information that you submit. Who is responsible for what you submitted?",
       options: [
         { text: "Only the AI company", feedback: "The AI company didn't submit anything under your name — you did." },
@@ -298,6 +303,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q6",
       moduleId: "module4",
+      pattern: "boundary_check",
       stem: "Your teacher allows AI to check spelling but not rewrite sentences.",
       options: [
         { text: "“Rewrite this paragraph so it reads better than it does now.”", feedback: "A full rewrite is far more than checking spelling." },
@@ -325,6 +331,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q7",
       moduleId: "module4",
+      pattern: "compare",
       stem: "Which is the safest way to ask AI about a friend's situation?",
       options: [
         {
@@ -355,6 +362,7 @@ export const module4: ModuleContent = {
     {
       id: "M4-Q8",
       moduleId: "module4",
+      pattern: "compare",
       stem: "Which statement is best?",
       options: [
         { text: "If the tool exists, students have the right to use it on any assignment they get", feedback: "Availability does not equal permission." },
