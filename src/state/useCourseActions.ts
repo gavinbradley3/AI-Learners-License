@@ -28,6 +28,7 @@ export function useCourseActions() {
       answerSurvey: (patch: Partial<ExitSurveyState>) => dispatch({ type: "ANSWER_SURVEY", patch }),
       completeSurvey: () => dispatch({ type: "COMPLETE_SURVEY" }),
       issueLicence: (record: LicenceRecord) => dispatch({ type: "ISSUE_LICENCE", record }),
+      setSessionId: (sessionId: string) => dispatch({ type: "SET_SESSION_ID", sessionId }),
       reset: () => dispatch({ type: "RESET" }),
     }),
     [dispatch],

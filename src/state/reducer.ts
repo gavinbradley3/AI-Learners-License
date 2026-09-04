@@ -23,6 +23,7 @@ export type RootAction =
   | { type: "ANSWER_SURVEY"; patch: Partial<ExitSurveyState> }
   | { type: "COMPLETE_SURVEY" }
   | { type: "ISSUE_LICENCE"; record: LicenceRecord }
+  | { type: "SET_SESSION_ID"; sessionId: string }
   | { type: "RESET" };
 
 function getMasteryState(state: ProgressState, track: MasteryTrack): MasteryProgressState {
@@ -109,6 +110,11 @@ export function createRootReducer(engines: Record<MasteryTrack, MasteryEngine>) 
       // change a number the student may already have printed.
       case "ISSUE_LICENCE":
         return state.licence ? state : { ...state, licence: action.record };
+
+      // Only ever set when a teacher has configured survey submission; a course with no
+      // endpoint never generates an id at all.
+      case "SET_SESSION_ID":
+        return state.sessionId ? state : { ...state, sessionId: action.sessionId };
 
       case "COMPLETE_SURVEY":
         return { ...state, exitSurvey: { ...state.exitSurvey, completed: true } };

@@ -32,6 +32,12 @@ export interface MasteryProgressState {
   lastMissedConcepts: readonly string[];
   attemptCount: number;
   currentAttempt: QuizAttemptState | null;
+  /**
+   * Score of the most recently finished attempt. Additive and optional: progress saved
+   * before this field existed loads with it undefined.
+   */
+  lastScore?: number;
+  lastTotal?: number;
   /** Question IDs still needing a correct correction answer for the current passing/failing attempt. */
   correctionQueue: readonly string[] | null;
 }

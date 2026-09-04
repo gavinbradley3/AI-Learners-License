@@ -43,3 +43,16 @@
   font-size: var(--font-size-base);
   resize: vertical;
 }
+
+/* Submission status. Only rendered when a teacher has configured an endpoint; a failure
+   says so plainly and makes clear the student's completion is unaffected. */
+.sendStatus {
+  margin: var(--space-3) 0 0;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-line);
+  border-left: var(--rail-width) solid var(--color-slate-400);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-sunken);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}

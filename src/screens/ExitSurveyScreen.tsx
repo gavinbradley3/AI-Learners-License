@@ -1,10 +1,21 @@
+import { useState } from "react";
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
 import { exitSurvey } from "../data/copy";
+import { courseContent } from "../data/courseContent";
+import {
+  buildSurveyPayload,
+  createSessionId,
+  readSurveyConfig,
+  submitSurvey,
+} from "../services/surveySubmission";
 import { useCourse } from "../state/CourseContext";
 import { useCourseActions } from "../state/useCourseActions";
 import type { LikertAnswer, UsefulnessAnswer } from "../types";
 import styles from "./ExitSurveyScreen.module.css";
+
+/** "off" when no endpoint is configured — the course then makes no network request at all. */
+type SendState = "off" | "sending" | "sent" | "failed";
 
 const LIKERT_VALUES: LikertAnswer[] = ["stronglyAgree", "agree", "notSure", "disagree"];
 const USEFULNESS_VALUES: UsefulnessAnswer[] = ["veryUseful", "somewhatUseful", "notVeryUseful", "notUseful"];
@@ -13,11 +24,47 @@ export function ExitSurveyScreen() {
   const { state } = useCourse();
   const actions = useCourseActions();
   const survey = state.exitSurvey;
+  const [sendState, setSendState] = useState<SendState>("off");
+
+  /**
+   * Completion is recorded locally first and never waits on the network. The request is
+   * fire-and-forget from the course's point of view: whatever it returns, the student has
+   * already finished and their licence is already theirs.
+   */
+  const finish = () => {
+    actions.completeSurvey();
+
+    const config = readSurveyConfig();
+    if (!config) return;
+
+    const sessionId = state.sessionId ?? createSessionId();
+    if (!state.sessionId) actions.setSessionId(sessionId);
+
+    setSendState("sending");
+    void submitSurvey(
+      buildSurveyPayload({
+        sessionId,
+        classId: config.classId,
+        preCheck: state.preCheck,
+        preCheckTotal: courseContent.preCheck.length,
+        final: state.final,
+        survey,
+      }),
+      config.endpoint,
+    ).then((result) => setSendState(result.ok ? "sent" : "failed"));
+  };
 
   if (survey.completed) {
     return (
       <Card headingLevel="h1" variant="success" eyebrow="Feedback" heading="Thanks">
         <p>{exitSurvey.thanksMessage}</p>
+        {sendState !== "off" && (
+          <p className={styles.sendStatus} role="status" aria-live="polite">
+            {sendState === "sending" && exitSurvey.sendingMessage}
+            {sendState === "sent" && exitSurvey.sentMessage}
+            {sendState === "failed" && exitSurvey.sendFailedMessage}
+          </p>
+        )}
         <div className="actions-row">
           <Button onClick={() => actions.goTo("pilotSummary")}>Continue</Button>
         </div>
@@ -81,7 +128,7 @@ export function ExitSurveyScreen() {
       </fieldset>
 
       <div className="actions-row">
-        <Button disabled={!canFinish} onClick={() => actions.completeSurvey()}>
+        <Button disabled={!canFinish} onClick={finish}>
           {exitSurvey.finishLabel}
         </Button>
       </div>

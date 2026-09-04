@@ -21,6 +21,14 @@ The site teaches AI literacy; it does **not** need to call an AI API.
 - No collection of names, emails, student IDs, or device identifiers.
 - No external AI API.
 - Progress is local-only.
+- **One deliberate exception to "local-only":** the exit survey may post to a teacher-configured
+  endpoint (`VITE_SURVEY_ENDPOINT`), and only the exit survey. It is off unless that variable is
+  set, in which case a single POST carries an allowlist of: a random session id, an optional class
+  label, the pre-check score, the final score, the four survey answers, the one optional comment,
+  and a timestamp. Never a name, email, student id, school account, IP address collected by this
+  code, device fingerprint, or per-question answer history. Do not widen that list, do not route
+  learning progress through it, and do not remove it as a "fix" — see `src/services/surveySubmission.ts`
+  and the README section "Collecting exit-survey results".
 - No timers, XP, coins, leaderboards, mascots, or childish gamification.
 - Do not silently rewrite authored assessment content or change correct answers.
 
@@ -99,7 +107,8 @@ Do not add:
 - login
 - backend
 - database
-- cloud analytics
+- cloud analytics (the exit-survey endpoint above is the one authorised outbound path, and it is
+  not analytics: it fires once, on an explicit Finish, with the fields listed there and no others)
 - teacher dashboard
 - chatbot
 - AI API calls

@@ -109,6 +109,9 @@ export const exitSurvey = {
   q5Placeholder: "Optional — short answer",
   finishLabel: "Finish",
   thanksMessage: "Thanks. Your feedback has been saved on this device.",
+  sendingMessage: "Sending feedback\u2026",
+  sentMessage: "Feedback sent. Thanks for helping improve the course.",
+  sendFailedMessage: "Your feedback couldn't be sent. Your course completion is still saved.",
 } as const;
 
 export const pilotSummary = {

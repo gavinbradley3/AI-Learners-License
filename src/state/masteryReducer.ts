@@ -64,6 +64,8 @@ export function masteryReducer(
         attemptCount: state.attemptCount + 1,
         lastAttemptIds: state.currentAttempt.questionIds,
         lastMissedConcepts: missedConcepts,
+        lastScore: summary.correctCount,
+        lastTotal: answers.length,
       };
 
       if (correctionQueue.length === 0) {

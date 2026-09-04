@@ -20,6 +20,62 @@ npm run typecheck   # TypeScript project check, no emit
 
 `npm run build` produces a fully static `dist/` folder (HTML/CSS/JS only). Deploy it to any static host (GitHub Pages, Netlify, Cloudflare Pages, a school web server, etc.) — no server-side runtime is required.
 
+On Vercel, `vercel.json` already sets the build command to `npm run build` and the output directory to `dist`. Leave the Root Directory at the repository root and do not override the install or build command in the dashboard.
+
+## Collecting exit-survey results (optional, off by default)
+
+Out of the box the course makes **no network requests**. Everything a student does — pre-check, module attempts, corrections, the licence — stays in their browser's `localStorage` and never leaves the device.
+
+A teacher who wants the exit-survey results can turn on a single outbound path by setting one environment variable. Nothing else in the course is ever sent.
+
+### Configuring it in Vercel
+
+Project → Settings → Environment Variables:
+
+| Variable | Required | Value |
+| --- | --- | --- |
+| `VITE_SURVEY_ENDPOINT` | yes, to enable sending | An `https://` URL that accepts a `POST` with a JSON body |
+| `VITE_SURVEY_CLASS_ID` | no | A label you choose, e.g. `period-3`. Never a student identifier. |
+
+Redeploy after setting them: Vite bakes `VITE_` variables into the bundle at build time, so a change only takes effect on the next build. Copy `.env.example` to `.env.local` to test locally. An endpoint that is not `https` is refused (except `localhost`, for testing) rather than posting feedback in the clear.
+
+**These values are public.** Anything in a `VITE_` variable ends up readable in the JavaScript any student can view. Never put an API key, token, or password in one. The endpoint URL itself is the only secret you get, so choose a service whose collection URL is long and unguessable, and rely on that plus the fact that the payload contains nothing identifying.
+
+### What is sent
+
+One `POST` per student, at the moment they press **Finish** on the exit survey:
+
+```json
+{
+  "schema": "ai-learner-licence.exit-survey.v1",
+  "sessionId": "k3p9x2mq7rt4wz8b",
+  "classId": "period-3",
+  "preCheckScore": 3,
+  "preCheckTotal": 5,
+  "finalScore": 11,
+  "finalTotal": 12,
+  "responses": { "q1": "agree", "q2": "stronglyAgree", "q3": "notSure", "q4": "veryUseful" },
+  "comment": "I'll ask for a hint before the answer.",
+  "submittedAt": "2026-09-04T15:00:00.000Z"
+}
+```
+
+`sessionId` is random, generated on the device, and exists only so two submissions can be told apart. It is not derived from anything about the student, their device, or their answers.
+
+**Never sent:** student names, email addresses, student ids, school accounts, any IP address this code collects, device or browser fingerprints, and the question-by-question history of what anyone answered. `src/services/surveySubmission.ts` builds the payload field by field from that allowlist rather than serialising progress state, and a test asserts the shape.
+
+A failed send can never affect a student. Completion is recorded locally before the request goes out; if the request fails the student sees "Your feedback couldn't be sent. Your course completion is still saved." and their licence is unaffected.
+
+### Choosing where to point it
+
+No third-party service is built in — the endpoint is a plain URL, so you can point it anywhere. Roughly, from most private to least:
+
+- **A school-run endpoint** (a district server, or a small serverless function you deploy). Nothing leaves institutional control. Most work to set up.
+- **A serverless function you own** on the same host as the site (Vercel, Cloudflare Workers) writing to storage you control. Note this repository deliberately ships no backend; adding one is a change of scope you would be making knowingly.
+- **A form or automation service** (Google Forms via its response endpoint, Formspree, Tally, a Zapier/Make webhook, an Airtable or Google Sheets automation). Fastest to set up, and the trade-off is that a third party you do not control receives and stores the responses. The payload carries nothing identifying, but you are still handing a vendor a record of how a class answered, so check it against your division's privacy rules before using it. Google Forms in particular can be configured to record the responder's account — do not use a form set up that way.
+
+If any option would require a credential that cannot safely be committed, that is a sign it is the wrong option here: there is no safe place for a secret in a static client-side build.
+
 ## Architecture
 
 ```text
@@ -44,6 +100,9 @@ Content, mastery logic, persistence, and UI are kept as separate concerns per `C
 - **Persistence** (`src/storage/progressStorage.test.ts`) — round-tripping valid state, malformed JSON, version mismatches, and a `localStorage`-unavailable fallback.
 - **Course reducer** (`src/state/reducer.test.ts`) — full scripted playthroughs (5/5, 4/5, 3/5, final clear → licence earned, pre-check scoring, reset).
 - **Components** (`src/components/QuestionCard.test.tsx`) — answer locking, the double-click guard, and correction retry-until-correct behaviour.
+- **Option shuffling** (`src/logic/optionOrder.test.ts`, `src/components/QuestionCardShuffle.test.tsx`) — the correct answer keeps its identity and its own feedback wherever it is displayed, the same seed reproduces an order across a refresh, a retry reshuffles, and the correct answer lands in all four positions about equally.
+- **Licence credential** (`src/logic/licenceCredential.test.ts`) — number format, independence from the moment of issue, local-date correctness, and issuing exactly once.
+- **Exit-survey submission** (`src/services/surveySubmission.test.ts`, `src/screens/ExitSurveySubmission.test.tsx`) — the payload allowlist, refusal of non-https endpoints, no request at all when unconfigured, and completion surviving a failed send.
 - **Content integrity** (`src/data/courseContent.test.ts`) — every bank has the right size, unique ids, valid corrections, and the final bank's category counts support the §22 composition targets.
 
 ## Content review notes
