@@ -83,6 +83,13 @@ export const licence = {
   cardSkillsHeading: "Skills demonstrated:",
   cardSkills: ["Learning Support", "AI Judgment", "Verification", "Privacy", "Responsibility"],
   cardFooter: "Classroom learning credential — not an official school or district certification",
+  cardRestriction: "Valid only when AI use is permitted by your teacher",
+  cardNumberLabel: "Licence no.",
+  cardIssuedLabel: "Issued",
+  cardSealTop: "AI Learner",
+  cardSealBottom: "Licence",
+  cardSealMark: "Cleared",
+  printLabel: "Print or save as PDF",
   continueLabel: "Continue",
 } as const;
 

@@ -1,5 +1,12 @@
 import { MODULE_IDS } from "../types";
-import type { AppScreen, ExitSurveyState, MasteryProgressState, ModuleId, ProgressState } from "../types";
+import type {
+  AppScreen,
+  ExitSurveyState,
+  LicenceRecord,
+  MasteryProgressState,
+  ModuleId,
+  ProgressState,
+} from "../types";
 import { masteryReducer, type MasteryAction } from "./masteryReducer";
 import type { MasteryEngine } from "./masteryEngine";
 import { createInitialProgressState } from "./initialState";
@@ -15,6 +22,7 @@ export type RootAction =
   | { type: "MASTERY"; track: MasteryTrack; action: MasteryAction }
   | { type: "ANSWER_SURVEY"; patch: Partial<ExitSurveyState> }
   | { type: "COMPLETE_SURVEY" }
+  | { type: "ISSUE_LICENCE"; record: LicenceRecord }
   | { type: "RESET" };
 
 function getMasteryState(state: ProgressState, track: MasteryTrack): MasteryProgressState {
@@ -95,6 +103,12 @@ export function createRootReducer(engines: Record<MasteryTrack, MasteryEngine>) 
 
       case "ANSWER_SURVEY":
         return { ...state, exitSurvey: { ...state.exitSurvey, ...action.patch } };
+
+      // The record is built outside the reducer so this stays pure and testable; the
+      // licence screen issues it once, and re-issuing is a no-op so a refresh cannot
+      // change a number the student may already have printed.
+      case "ISSUE_LICENCE":
+        return state.licence ? state : { ...state, licence: action.record };
 
       case "COMPLETE_SURVEY":
         return { ...state, exitSurvey: { ...state.exitSurvey, completed: true } };

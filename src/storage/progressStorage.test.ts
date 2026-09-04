@@ -38,6 +38,20 @@ describe("progressStorage", () => {
     expect(loaded).toEqual(createInitialProgressState());
   });
 
+  it("still loads progress saved before the licence and session fields existed", () => {
+    // The v1.1 fields are additive and optional; a v1 save must survive untouched rather
+    // than being thrown away and resetting a student mid-course.
+    const older = createInitialProgressState();
+    delete (older as { licence?: unknown }).licence;
+    delete (older as { sessionId?: unknown }).sessionId;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...older, screen: "module3" }));
+
+    const loaded = loadProgress();
+    expect(loaded.screen).toBe("module3");
+    expect(loaded.licence).toBeUndefined();
+    expect(loaded.sessionId).toBeUndefined();
+  });
+
   it("clears stored progress on reset", () => {
     saveProgress({ ...createInitialProgressState(), screen: "final" });
     resetProgress();

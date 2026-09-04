@@ -115,3 +115,22 @@
     font-size: var(--font-size-lg);
   }
 }
+
+@media print {
+  .card {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    background: #ffffff;
+    animation: none;
+  }
+
+  .card::before {
+    display: none;
+  }
+
+  .head {
+    display: none;
+  }
+}

@@ -54,6 +54,17 @@ export interface ExitSurveyState {
   q5: string;
 }
 
+/**
+ * Generated on this device the moment the final challenge clears. The number is random
+ * and carries no information about the student — it exists so a licence looks like a
+ * real credential and so a teacher can tell two printouts apart, nothing more.
+ */
+export interface LicenceRecord {
+  number: string;
+  /** ISO date (YYYY-MM-DD) in the device's own timezone. */
+  issuedOn: string;
+}
+
 export interface ProgressState {
   version: 1;
   screen: AppScreen;
@@ -62,6 +73,13 @@ export interface ProgressState {
   final: MasteryProgressState;
   exitSurvey: ExitSurveyState;
   licenceEarned: boolean;
+  /**
+   * Additive optional fields. Progress saved before these existed parses fine and simply
+   * has them undefined, so no storage migration and no version bump.
+   */
+  licence?: LicenceRecord | null;
+  /** Random local id, used only if a teacher configures exit-survey submission. */
+  sessionId?: string;
 }
 
 export const STORAGE_KEY = "aiLearnerLicence:v1";

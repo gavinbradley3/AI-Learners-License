@@ -143,3 +143,22 @@ describe("root reducer: pre-check, survey, and reset", () => {
     expect(state).toEqual(createInitialProgressState());
   });
 });
+
+describe("root reducer: licence issuing", () => {
+  it("issues a licence number once and never changes it afterwards", () => {
+    const reducer = createRootReducer(buildEngines());
+    const earned = reducer(createInitialProgressState(), {
+      type: "ISSUE_LICENCE",
+      record: { number: "ALL-ABCD-2345", issuedOn: "2026-09-04" },
+    });
+    expect(earned.licence).toEqual({ number: "ALL-ABCD-2345", issuedOn: "2026-09-04" });
+
+    // A refresh that re-issues must not hand the student a different number from the one
+    // that may already be printed.
+    const again = reducer(earned, {
+      type: "ISSUE_LICENCE",
+      record: { number: "ALL-ZZZZ-9999", issuedOn: "2027-01-01" },
+    });
+    expect(again).toBe(earned);
+  });
+});

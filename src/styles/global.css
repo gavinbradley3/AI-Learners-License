@@ -126,3 +126,30 @@ button {
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
 }
+
+/* ---------------------------------------------------------------------------
+   Print. Only the credential should reach the paper: chrome, buttons and the
+   surrounding explanation are screen furniture.
+   --------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  header,
+  button,
+  .actions-row {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    background: #ffffff !important;
+    background-image: none !important;
+  }
+
+  /* Anything explicitly marked as screen furniture drops out of the printout. */
+  .screen-only {
+    display: none !important;
+  }
+}
