@@ -1,0 +1,31 @@
+Read `BUILD_SPEC.md` and `CLAUDE.md` completely before making changes.
+
+This is a fresh implementation of the AI Learner Licence classroom pilot.
+
+Your task is to build the complete v1 described in the specification, not a mock-up.
+
+Important working rules:
+
+1. Inspect the repository and local environment first.
+2. If the project is empty, scaffold the simplest appropriate React + TypeScript + Vite application.
+3. Treat the educational content and correct answers in `BUILD_SPEC.md` as source of truth.
+4. Do not add a backend, login, external AI API, analytics service, component framework, or unrelated feature.
+5. Keep course content separate from React components.
+6. Implement quiz selection, mastery, retries, correction requirements, and persistence as testable logic.
+7. Write automated tests for the logic required by the specification.
+8. Build the full student flow, not just the landing page.
+9. Make it visually polished and appropriate for Grade 7–8 students on Chromebooks without making it childish.
+10. Meet the accessibility and responsive requirements.
+11. Before you finish, run the tests, TypeScript checks, and production build and fix any actual failures.
+12. Compare the finished implementation against the Definition of Done in `BUILD_SPEC.md`.
+
+Do not stop to ask me cosmetic questions. Make sensible simple choices where the specification leaves implementation details open.
+
+If you discover a genuine contradiction that makes correct implementation impossible, explain that specific contradiction. Otherwise continue through implementation.
+
+At the end, give me a concise report with:
+- what you built
+- how to run it
+- test/build results
+- any unresolved issue
+- the best next step for me to review the site.
