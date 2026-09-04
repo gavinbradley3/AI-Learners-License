@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ChoiceList } from "./ChoiceList";
 import { FeedbackBanner } from "./FeedbackBanner";
 import { Button } from "./Button";
+import { hasFixedOrder, presentOptions } from "../logic/optionOrder";
 import styles from "./QuestionCard.module.css";
 
 export interface CorrectionCardProps {
@@ -11,6 +12,11 @@ export interface CorrectionCardProps {
   correctIndex: 0 | 1;
   /** Shown only after an incorrect attempt, to explain without shaming. */
   explanation: string;
+  /**
+   * Deterministic shuffle seed. Ignored for Yes/No and True/False pairs, whose order
+   * carries meaning — reversing them reads as a mistake, not as randomisation.
+   */
+  shuffleSeed?: string;
   continueLabel?: string;
   onCleared: () => void;
 }
@@ -25,12 +31,20 @@ export function CorrectionCard({
   options,
   correctIndex,
   explanation,
+  shuffleSeed,
   continueLabel = "Continue",
   onCleared,
 }: CorrectionCardProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const isCorrect = selectedIndex !== null && selectedIndex === correctIndex;
+  const presented = useMemo(() => {
+    if (!shuffleSeed || hasFixedOrder(options)) {
+      return { options: [...options], correctIndex };
+    }
+    return presentOptions(options, correctIndex, shuffleSeed);
+  }, [options, correctIndex, shuffleSeed]);
+
+  const isCorrect = selectedIndex !== null && selectedIndex === presented.correctIndex;
 
   const handleTryAgain = () => setSelectedIndex(null);
 
@@ -39,9 +53,9 @@ export function CorrectionCard({
       {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
       <p className={styles.prompt}>{prompt}</p>
       <ChoiceList
-        options={options}
+        options={presented.options}
         selectedIndex={selectedIndex}
-        correctIndex={selectedIndex !== null ? correctIndex : null}
+        correctIndex={selectedIndex !== null ? presented.correctIndex : null}
         onSelect={setSelectedIndex}
       />
       {selectedIndex !== null && (

@@ -62,6 +62,7 @@ export function FinalChallengeScreen() {
             prompt={question.stem}
             options={question.options.map((o) => ({ text: o.text, feedback: o.feedback }))}
             correctIndex={question.correctIndex}
+            shuffleSeed={`${question.id}:${finalState.attemptCount}`}
             onContinue={({ correct }) => actions.answerQuestion("final", question.id, correct)}
           />
         </div>
@@ -83,6 +84,7 @@ export function FinalChallengeScreen() {
             options={question.correction.options}
             correctIndex={question.correction.correctIndex}
             explanation={wrongExplanation}
+            shuffleSeed={`${question.id}:correction:${finalState.attemptCount}`}
             onCleared={() => actions.clearCorrection("final", questionId)}
           />
         </div>

@@ -176,7 +176,7 @@ export const module3: ModuleContent = {
       options: [
         { text: "Use it immediately", feedback: "Specific does not mean verified." },
         { text: "Confirm it using a reliable source", feedback: "An exact-looking number can still be wrong. Verify it independently." },
-        { text: "Ask AI whether it invented it", feedback: "AI checking itself is not independent confirmation." },
+        { text: "Ask AI whether it invented the number", feedback: "AI checking itself is not independent confirmation." },
         { text: "Make the number less exact", feedback: "Changing the number does not make it accurate." },
       ],
       correctIndex: 1,
@@ -192,16 +192,22 @@ export const module3: ModuleContent = {
       moduleId: "module3",
       stem: "What is an AI hallucination?",
       options: [
-        { text: "When the screen flashes", feedback: "A screen flash is a display glitch, not AI generating false information." },
+        {
+          text: "When the app freezes or the screen flashes",
+          feedback: "A frozen screen is a display glitch, not AI generating false information.",
+        },
         {
           text: "When AI confidently gives false or made-up information",
           feedback: "The dangerous part is that made-up information can sound real.",
         },
         {
-          text: "When a student disagrees with AI",
+          text: "When a student disagrees with what AI said",
           feedback: "Disagreeing with AI isn't the same as AI inventing false information — sometimes the student is right.",
         },
-        { text: "When AI loads slowly", feedback: "Slow loading is a performance issue, not AI making something up." },
+        {
+          text: "When AI takes a really long time to load an answer",
+          feedback: "Slow loading is a performance issue, not AI making something up.",
+        },
       ],
       correctIndex: 1,
       concept: "hallucination",
@@ -222,7 +228,7 @@ export const module3: ModuleContent = {
           text: "Do not use the quotation unless you can verify it",
           feedback: "If you cannot confirm the quote exists, you should not present it as real.",
         },
-        { text: "Put quotation marks around it anyway", feedback: "Quotation marks do not make something authentic." },
+        { text: "Put quotation marks around it and use it anyway", feedback: "Quotation marks do not make something authentic." },
       ],
       correctIndex: 2,
       concept: "invented_quote",
@@ -237,13 +243,13 @@ export const module3: ModuleContent = {
       moduleId: "module3",
       stem: "AI gives you three websites for a research project.",
       options: [
-        { text: "Put all three in your bibliography", feedback: "Generated citations can be wrong." },
+        { text: "Put all three straight into your bibliography", feedback: "Generated citations can be wrong." },
         {
-          text: "Open the sources and check whether they exist and support your information",
+          text: "Open each source and check it exists and backs up your point",
           feedback: "A source should actually exist and support the claim you are using.",
         },
-        { text: "Trust them because they have professional titles", feedback: "Professional-looking details are not proof." },
-        { text: "Ask AI to create three more", feedback: "More generated sources do not solve verification." },
+        { text: "Trust them because the titles look professional and real", feedback: "Professional-looking details are not proof." },
+        { text: "Ask AI to find three more just like them", feedback: "More generated sources do not solve verification." },
       ],
       correctIndex: 1,
       concept: "source_verification",
@@ -258,13 +264,16 @@ export const module3: ModuleContent = {
       moduleId: "module3",
       stem: "AI gives an answer that strongly supports only one side of a controversial issue.",
       options: [
-        { text: "“Can you make this longer?”", feedback: "Length does not fix bias." },
+        { text: "“Can you make this answer longer and more detailed?”", feedback: "Length does not fix bias." },
         {
           text: "“What important viewpoints or evidence might be missing?”",
           feedback: "Looking for missing perspectives helps you notice possible bias.",
         },
-        { text: "“Can you sound more confident?”", feedback: "Confidence does not improve fairness." },
-        { text: "“Can you guarantee this is unbiased?”", feedback: "AI cannot simply guarantee that its response has no bias." },
+        { text: "“Can you say this with more confidence?”", feedback: "Confidence does not improve fairness." },
+        {
+          text: "“Can you guarantee this answer is completely unbiased?”",
+          feedback: "AI cannot simply guarantee that its response has no bias.",
+        },
       ],
       correctIndex: 1,
       concept: "bias",
@@ -280,16 +289,19 @@ export const module3: ModuleContent = {
       stem: "AI answers your question differently twice.",
       options: [
         {
-          text: "The newest answer must be correct",
+          text: "The newest answer must be the correct one",
           feedback: "Being newer doesn't make an answer more accurate — AI can be wrong on any attempt.",
         },
         {
-          text: "AI output should be evaluated rather than automatically trusted",
+          text: "AI answers should be checked, not automatically trusted",
           feedback: "Different answers are another reminder that AI is not an automatic authority.",
         },
-        { text: "The longest answer is correct", feedback: "Length has nothing to do with which answer is actually true." },
         {
-          text: "Choose the answer you like more",
+          text: "The longer, more detailed answer is the correct one",
+          feedback: "Length has nothing to do with which answer is actually true.",
+        },
+        {
+          text: "Go with whichever answer you like better",
           feedback: "Which answer you prefer doesn't tell you which one is actually correct.",
         },
       ],

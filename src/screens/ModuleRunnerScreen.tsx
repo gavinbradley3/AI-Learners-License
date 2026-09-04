@@ -58,6 +58,7 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
             prompt={question.stem}
             options={question.options.map((o) => ({ text: o.text, feedback: o.feedback }))}
             correctIndex={question.correctIndex}
+            shuffleSeed={`${question.id}:${moduleState.attemptCount}`}
             onContinue={({ correct }) => actions.answerQuestion(moduleId, question.id, correct)}
           />
         </div>
@@ -79,6 +80,7 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
             options={question.correction.options}
             correctIndex={question.correction.correctIndex}
             explanation={wrongExplanation}
+            shuffleSeed={`${question.id}:correction:${moduleState.attemptCount}`}
             onCleared={() => actions.clearCorrection(moduleId, questionId)}
           />
         </div>

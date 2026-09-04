@@ -53,6 +53,7 @@ export function PreCheckScreen() {
           options={question.options.map((text) => ({ text }))}
           correctIndex={question.correctIndex}
           revealCorrectness={false}
+          shuffleSeed={question.id}
           onContinue={({ correct }) => {
             actions.answerPreCheck(question.id, correct);
             if (answeredCount + 1 === content.preCheck.length) {

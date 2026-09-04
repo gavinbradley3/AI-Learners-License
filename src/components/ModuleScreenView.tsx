@@ -57,6 +57,7 @@ export function ModuleScreenView({ screen, onDone }: ModuleScreenViewProps) {
           prompt={screen.prompt}
           options={screen.options.map((o) => ({ text: o.label, feedback: o.feedback }))}
           correctIndex={screen.correctIndex}
+          shuffleSeed={screen.id}
           continueLabel={screen.continueLabel}
           onContinue={onDone}
         />
@@ -100,6 +101,7 @@ function DeckScreenView({
         prompt={item.prompt}
         choiceLabels={item.choiceLabels ?? screen.choiceLabels ?? []}
         correctIndex={item.correctIndex}
+        {...(item.choiceLabels ? { shuffleSeed: item.id } : {})}
         feedback={item.feedback}
         continueLabel={isLast ? screen.continueLabel : "Next"}
         onContinue={() => {

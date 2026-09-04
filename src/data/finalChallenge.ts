@@ -30,11 +30,11 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     ],
     options: [
       {
-        text: "Fine because you made three yourself",
+        text: "Fine because you came up with three ideas yourself",
         feedback: "Making three ideas first doesn't erase the ten AI-generated ones still sitting in the mix — the teacher wanted to see only what you could generate.",
       },
       {
-        text: "Fine because you chose the final idea",
+        text: "Fine because you chose the final idea yourself",
         feedback: "Choosing which idea to use isn't the same as generating it — the teacher is assessing where the ideas came from, not who picked the winner.",
       },
       {
@@ -42,7 +42,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         feedback: "Right — the assignment is specifically testing your own idea generation, and asking AI for more ideas hands that exact skill over.",
       },
       {
-        text: "Fine if you change the AI idea",
+        text: "Fine as long as you change the AI idea",
         feedback: "Editing an AI-generated idea still starts from AI's idea, not yours — the teacher wanted to see your original thinking.",
       },
     ],
@@ -82,11 +82,11 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "You tried a math problem twice and cannot figure out your next step. AI homework help is allowed.",
     options: [
       {
-        text: "“Give me the finished answer.”",
+        text: "“Give me the finished answer so I can move on.”",
         feedback: "A finished answer skips the exact struggle you're supposed to work through — try asking for a hint instead.",
       },
       {
-        text: "“Show me exactly what to submit.”",
+        text: "“Show me exactly what I should submit for this.”",
         feedback: "Asking what to submit turns AI into the one solving the problem, not you.",
       },
       {
@@ -94,7 +94,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         feedback: "You've already tried twice — a hint that responds to your attempt keeps the next step yours to figure out.",
       },
       {
-        text: "“Solve it, then I'll copy the process.”",
+        text: "“Solve the whole thing, then I'll copy the process into my work.”",
         feedback: "Copying a process you didn't work out yourself is still someone else's solution, just relabeled as practice.",
       },
     ],
@@ -112,13 +112,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "AI provides:",
     context: [{ quote: "Chen, Melissa. Digital Learning in Canadian Schools. Alberta Education Research Journal, 2025." }, "It looks believable."],
     options: [
-      { text: "Nothing", feedback: "Doing nothing means you'd submit a citation you've never actually confirmed exists." },
+      {
+        text: "Nothing — it looks like a real journal article",
+        feedback: "Doing nothing means you'd submit a citation you've never actually confirmed exists.",
+      },
       {
         text: "Check whether the source actually exists and supports your claim",
         feedback: "Right — a real-looking citation still needs to be found and checked before you rely on it.",
       },
-      { text: "Ask AI to format it more professionally", feedback: "Better formatting makes a citation look more convincing without making it any more real." },
-      { text: "Remove the publication year", feedback: "Removing a detail doesn't verify the source — it just makes a fake citation harder to check." },
+      {
+        text: "Ask AI to format the citation more professionally for you",
+        feedback: "Better formatting makes a citation look more convincing without making it any more real.",
+      },
+      {
+        text: "Remove the publication year to be safe",
+        feedback: "Removing a detail doesn't verify the source — it just makes a fake citation harder to check.",
+      },
     ],
     correctIndex: 1,
     concept: "source_verification",
@@ -134,7 +143,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "AI writes your full reading response. You rewrite several sentences and add your own opening sentence.",
     options: [
       {
-        text: "The response is now fully yours",
+        text: "The response counts as fully yours now",
         feedback: "Adding one sentence and editing a few others still leaves AI's original thinking underneath most of the response.",
       },
       {
@@ -142,7 +151,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         feedback: "Word count isn't the issue — the issue is who came up with the ideas and reasoning being assessed.",
       },
       {
-        text: "AI still produced much of the thinking you were supposed to demonstrate",
+        text: "AI still produced most of the thinking being assessed",
         feedback: "Right — most of the understanding this response is supposed to demonstrate still came from AI, not you.",
       },
       {
@@ -163,13 +172,16 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "tutor",
     stem: "You want to prepare for a science quiz.",
     options: [
-      { text: "Ask AI to create answers to read", feedback: "Reading answers gives you less practice than answering yourself." },
       {
-        text: "Ask AI to quiz you one question at a time and wait for your response",
+        text: "Ask AI to write out answers for you to read over",
+        feedback: "Reading answers gives you less practice than answering yourself.",
+      },
+      {
+        text: "Ask AI to quiz you one question at a time",
         feedback: "Answering from memory makes you practise what you will need to do later.",
       },
-      { text: "Ask AI to predict your mark", feedback: "Predicting a mark does not help you study." },
-      { text: "Ask AI to take the quiz", feedback: "That removes the practice entirely." },
+      { text: "Ask AI to predict what mark you'll get", feedback: "Predicting a mark does not help you study." },
+      { text: "Ask AI to take the quiz for you", feedback: "That removes the practice entirely." },
     ],
     correctIndex: 1,
     concept: "retrieval_practice",
@@ -190,7 +202,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         feedback: "A precise-looking decimal can be just as made up as a rounded one — precision isn't proof.",
       },
       {
-        text: "Use it because AI sounds confident",
+        text: "Use it because AI sounded confident about it",
         feedback: "Confidence in how AI says something tells you nothing about whether it's true.",
       },
       {
@@ -198,7 +210,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         feedback: "Right — an unsourced statistic needs an independent check before it goes on a slide.",
       },
       {
-        text: "Round it to 71%",
+        text: "Round it to 71% so it looks less specific",
         feedback: "Rounding the number doesn't touch the real problem: it still hasn't been verified.",
       },
     ],
@@ -216,15 +228,15 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "A classmate sends you a private message saying they are struggling with a friendship. You want advice.",
     options: [
       {
-        text: "Paste their entire message into AI",
+        text: "Paste their entire message into AI so it has the context",
         feedback: "That message is your classmate's private information, not yours to hand to an AI tool.",
       },
       {
-        text: "Upload screenshots",
+        text: "Upload screenshots of the conversation",
         feedback: "A screenshot still exposes your classmate's private words and identity.",
       },
       {
-        text: "Ask a general question without sharing identifying or private details",
+        text: "Ask a general question without any identifying details",
         feedback: "Right — a general question can get you useful advice without exposing anyone's private situation.",
       },
       {
@@ -249,9 +261,12 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         text: "“Here are my six ideas. Suggest two possible orders for my slides.”",
         feedback: "AI is helping with organization while the required ideas and research remain yours.",
       },
-      { text: "“Research my topic.”", feedback: "The research must stay yours under this permission." },
-      { text: "“Write my slide text.”", feedback: "Writing the slide text goes beyond organizing." },
-      { text: "“Create my main argument.”", feedback: "The main argument must stay yours under this permission." },
+      { text: "“Research my topic and send me the key facts.”", feedback: "The research must stay yours under this permission." },
+      { text: "“Write the text for each of my slides.”", feedback: "Writing the slide text goes beyond organizing." },
+      {
+        text: "“Create the main argument and evidence for my presentation.”",
+        feedback: "The main argument must stay yours under this permission.",
+      },
     ],
     correctIndex: 0,
     concept: "process_support",
@@ -271,15 +286,15 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         feedback: "Newer isn't the same as more accurate — AI can be out of date or simply wrong.",
       },
       {
-        text: "Automatically trust whichever answer is longer",
+        text: "Automatically trust whichever answer is longer and more detailed",
         feedback: "Length has nothing to do with which answer is actually correct.",
       },
       {
-        text: "Investigate using reliable sources and ask your teacher if needed",
+        text: "Check reliable sources and ask your teacher if needed",
         feedback: "Right — a disagreement between sources is exactly when it's worth checking further and asking your teacher.",
       },
       {
-        text: "Pick the answer you prefer",
+        text: "Pick whichever answer you prefer",
         feedback: "Picking whichever answer you like better isn't how you figure out which one is true.",
       },
     ],
@@ -316,19 +331,19 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     context: [{ quote: "Find the best three sources for me and tell me which ones are reliable." }],
     options: [
       {
-        text: "Strong use because AI saves time",
+        text: "Strong use because AI saves you research time",
         feedback: "Saving time doesn't matter here — the point of the assignment is to practise finding and evaluating sources yourself.",
       },
       {
-        text: "Questionable because AI is doing the research skill being assessed",
+        text: "Questionable because AI did the research skill being assessed",
         feedback: "Right — even with real sources, AI just did the exact evaluating skill your teacher wants to see from you.",
       },
       {
-        text: "Fine if the sources are real",
+        text: "Fine as long as the sources AI found turn out to be real",
         feedback: "The sources being real doesn't fix the problem — you still didn't do the evaluating.",
       },
       {
-        text: "Fine if you read them afterward",
+        text: "Fine as long as you read them all afterward",
         feedback: "Reading the sources afterward doesn't undo the fact that AI did the finding and evaluating for you.",
       },
     ],
@@ -368,19 +383,19 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "AI gives you important health information that could affect a real decision.",
     options: [
       {
-        text: "Treat AI as the final authority",
+        text: "Treat AI as the final authority on what to do",
         feedback: "Treating AI as the final word is risky for something that could actually affect your health.",
       },
       {
-        text: "Check trustworthy health information and speak with an appropriate adult or professional when needed",
+        text: "Check a trustworthy health source and talk to an adult",
         feedback: "Right — real health decisions deserve a trustworthy source and, when it matters, an adult or professional.",
       },
       {
-        text: "Trust it if the answer is detailed",
+        text: "Trust it if the answer sounds detailed and medical",
         feedback: "A detailed answer can still be wrong — detail isn't the same as accuracy.",
       },
       {
-        text: "Ask AI to guarantee its answer",
+        text: "Ask AI to guarantee its answer is correct",
         feedback: "AI can't actually guarantee its own answer is correct, so asking doesn't add any real certainty.",
       },
     ],
@@ -429,7 +444,7 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "Teacher allows spellcheck and grammar feedback but says your writing must remain your own.",
     options: [
       {
-        text: "“Rewrite this professionally.”",
+        text: "“Rewrite this paragraph so it sounds professional.”",
         feedback: "That asks AI to produce new sentences, which goes past the grammar-feedback permission you were given.",
       },
       {
@@ -437,11 +452,11 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
         feedback: "Replacing your sentences means AI is doing the writing, not just checking it.",
       },
       {
-        text: "“Point out grammar errors and explain them without rewriting my sentences.”",
+        text: "“Point out my grammar errors without rewriting anything.”",
         feedback: "Right — this stays inside the exact permission: AI points out errors, and you're the one who fixes them.",
       },
       {
-        text: "“Change my vocabulary so I sound older.”",
+        text: "“Change my vocabulary so I sound older than I am.”",
         feedback: "Changing your vocabulary changes your voice, which is outside a spelling-and-grammar permission.",
       },
     ],
@@ -459,19 +474,19 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "AI gives an explanation of a historical conflict that makes one side seem completely reasonable and barely mentions the other side.",
     options: [
       {
-        text: "Assume the first side was correct",
+        text: "Assume the side AI defended must have been the correct one all along",
         feedback: "An answer that only shows one side isn't evidence that side is correct — it may just be missing the other one.",
       },
       {
-        text: "Ask what perspectives and evidence may be missing, then investigate reliable sources",
+        text: "Ask what perspectives are missing, then check reliable sources",
         feedback: "Right — a lopsided answer is exactly when it's worth asking what's missing and checking further.",
       },
       {
-        text: "Ask AI to make the answer shorter",
+        text: "Ask AI to make the answer shorter and clearer",
         feedback: "A shorter answer would still be one-sided — length isn't the problem here.",
       },
       {
-        text: "Submit it because AI is neutral",
+        text: "Submit it because AI is neutral by design",
         feedback: "AI isn't automatically neutral, and a one-sided answer is a sign it may not be here.",
       },
     ],
@@ -489,19 +504,19 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "You waited until the night before a project is due. You ask AI to create the whole project because there is not enough time left.",
     options: [
       {
-        text: "A deadline changes who is supposed to do the learning",
+        text: "A tight deadline changes who is supposed to do the actual learning",
         feedback: "Running out of time doesn't change who the assignment expects to do the actual learning — that's still you.",
       },
       {
-        text: "AI becomes acceptable whenever you are rushed",
+        text: "AI becomes acceptable whenever you're rushed for time",
         feedback: "Feeling rushed doesn't rewrite the rules the assignment was already built on.",
       },
       {
-        text: "Being short on time does not automatically change the assignment expectations",
+        text: "Being short on time doesn't change what the assignment expects",
         feedback: "Right — time pressure is real, but it doesn't change what the assignment was designed to have you learn.",
       },
       {
-        text: "It is acceptable if the project looks good",
+        text: "It's acceptable as long as the project looks good",
         feedback: "Looking good on the outside doesn't mean the required thinking actually happened.",
       },
     ],
@@ -519,19 +534,19 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "Teacher allows AI learning support. You wrote your own answer but are unsure whether your reasoning makes sense.",
     options: [
       {
-        text: "Ask AI to replace the answer",
+        text: "Ask AI to replace your answer with a better one",
         feedback: "Replacing your answer hands over the exact thinking the assignment wanted to see from you.",
       },
       {
-        text: "Ask AI to point out a possible weakness, revise it yourself, and check any factual claims",
+        text: "Ask AI to point out a weakness, then revise and fact-check it yourself",
         feedback: "Right — this uses AI for feedback and verification while you stay the one revising and deciding.",
       },
       {
-        text: "Ask AI to make the answer sound perfect and submit it unread",
+        text: "Ask AI to make the whole answer sound perfect, then submit it without reading it",
         feedback: "Submitting something unread means you never actually checked whether it's accurate or right for the assignment.",
       },
       {
-        text: "Ask AI to decide what you believe",
+        text: "Ask AI to decide what you should believe",
         feedback: "Your reasoning and conclusions need to stay yours — AI shouldn't be the one deciding what you believe.",
       },
     ],

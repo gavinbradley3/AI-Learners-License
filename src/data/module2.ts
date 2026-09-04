@@ -185,13 +185,16 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "You want to practise vocabulary.",
       options: [
-        { text: "“List the definitions.”", feedback: "Reading definitions can help, but it gives you less practice remembering them." },
+        {
+          text: "“List the definitions so I can read them over.”",
+          feedback: "Reading definitions can help, but it gives you less practice remembering them.",
+        },
         {
           text: "“Quiz me one word at a time and wait for my answer.”",
           feedback: "Retrieving the definitions yourself turns AI into practice instead of an answer sheet.",
         },
-        { text: "“Answer my vocabulary sheet.”", feedback: "AI would complete the practice for you." },
-        { text: "“Write definitions I can submit.”", feedback: "AI would create work you are supposed to produce." },
+        { text: "“Fill in my vocabulary sheet for me.”", feedback: "AI would complete the practice for you." },
+        { text: "“Write definitions I can copy onto my sheet.”", feedback: "AI would create work you are supposed to produce." },
       ],
       correctIndex: 1,
       concept: "retrieval_practice",
@@ -210,9 +213,12 @@ export const module2: ModuleContent = {
           text: "“Explain this in simpler language and give me a new example.”",
           feedback: "AI is helping you understand the content, not creating your assessed response.",
         },
-        { text: "“Write my science response.”", feedback: "That moves from explanation to replacement." },
-        { text: "“Answer tomorrow's quiz questions.”", feedback: "That removes the practice." },
-        { text: "“Tell me what mark I'll get.”", feedback: "Predicting a mark does not solve the learning problem." },
+        { text: "“Write my science response about this paragraph for me.”", feedback: "That moves from explanation to replacement." },
+        {
+          text: "“Answer tomorrow's quiz questions for me.”",
+          feedback: "That removes the practice you would get from answering them.",
+        },
+        { text: "“Tell me what mark this paragraph will get.”", feedback: "Predicting a mark does not solve the learning problem." },
       ],
       correctIndex: 0,
       concept: "explanation",
@@ -228,19 +234,19 @@ export const module2: ModuleContent = {
       stem: "You want feedback on your writing without having AI rewrite it.",
       options: [
         {
-          text: "“Fix everything.”",
+          text: "“Go through my whole response and fix anything that sounds weak or unclear to you.”",
           feedback: "That's a full rewrite request — it hands the actual revising to AI instead of just pointing out where to look.",
         },
         {
-          text: "“Make this sound smarter.”",
+          text: "“Read this and make the writing sound smarter than it does now.”",
           feedback: "That asks AI to improve the writing itself, not just flag where your reasoning is unclear.",
         },
         {
-          text: "“Tell me the two places where my reasoning is hardest to follow. Don't rewrite them.”",
+          text: "“Tell me the two places my reasoning is hardest to follow. Don't rewrite them.”",
           feedback: "This asks AI to point out what's unclear while leaving every rewriting decision to you.",
         },
         {
-          text: "“Write a stronger version.”",
+          text: "“Write me a stronger version of my second paragraph.”",
           feedback: "A stronger version would be AI's writing, not feedback on yours.",
         },
       ],
@@ -258,15 +264,15 @@ export const module2: ModuleContent = {
       stem: "You have no idea how to start a large project. AI use is allowed for planning.",
       options: [
         {
-          text: "“Complete the project.”",
+          text: "“Just complete the whole project for me.”",
           feedback: "That skips the planning step you're supposed to do — AI would be creating the whole product outright.",
         },
         {
-          text: "“Break the task into six smaller steps without creating the project content.”",
+          text: "“Break this into six smaller steps. Don't make the content.”",
           feedback: "AI can reduce the size of the problem without taking over the actual work.",
         },
         {
-          text: "“Create everything and I'll edit it.”",
+          text: "“Create everything and I'll edit it afterwards.”",
           feedback: "Editing afterward doesn't change who actually did the work — AI still created the project.",
         },
         {
@@ -287,14 +293,14 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "You have tried a math problem and are stuck.",
       options: [
-        { text: "“Answer it.”", feedback: "A full answer removes the exact problem-solving you're supposed to practise." },
+        { text: "“Just answer it for me.”", feedback: "A full answer removes the exact problem-solving you're supposed to practise." },
         { text: "“Give me one hint about my next step.”", feedback: "Start with the smallest amount of help that gets you moving again." },
         {
-          text: "“Show every step.”",
+          text: "“Show me every step of the solution.”",
           feedback: "Seeing every step is nearly the same as getting the answer — there's nothing left for you to work out.",
         },
         {
-          text: "“Do the difficult part.”",
+          text: "“Do the difficult part and I'll do the rest.”",
           feedback: "AI would be doing the one part of the problem that's actually yours to work through.",
         },
       ],
@@ -311,10 +317,16 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "What makes this prompt useful? “Ask me three questions that will help me improve my project idea.”",
       options: [
-        { text: "AI creates the project", feedback: "This prompt doesn't ask AI to create anything — it asks for questions, not a finished project." },
-        { text: "AI makes decisions for you", feedback: "Questions aren't decisions — you're still the one deciding what to do with them." },
-        { text: "AI pushes you to think about your own idea", feedback: "Questions can push your thinking without replacing it." },
-        { text: "AI guarantees the idea is good", feedback: "AI cannot guarantee quality." },
+        {
+          text: "AI creates the project idea for you",
+          feedback: "This prompt doesn't ask AI to create anything — it asks for questions, not a finished project.",
+        },
+        {
+          text: "AI makes the decisions instead of you",
+          feedback: "Questions aren't decisions — you're still the one deciding what to do with them.",
+        },
+        { text: "AI pushes you to think about your idea", feedback: "Questions can push your thinking without replacing it." },
+        { text: "AI guarantees your idea is a good one", feedback: "AI cannot guarantee quality." },
       ],
       correctIndex: 2,
       concept: "coaching_questions",
@@ -329,13 +341,19 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "Which study prompt gives you the most active practice?",
       options: [
-        { text: "“Summarize the whole unit.”", feedback: "A summary is something you'd read, not something you'd have to recall yourself." },
-        { text: "“Give me notes to read.”", feedback: "Reading notes is more passive than actually retrieving the information from memory." },
         {
-          text: "“Ask me questions one at a time and make me answer before giving feedback.”",
+          text: "“Summarize the whole unit so I can read it over.”",
+          feedback: "A summary is something you'd read, not something you'd have to recall yourself.",
+        },
+        {
+          text: "“Give me a full set of notes I can read through before the test.”",
+          feedback: "Reading notes is more passive than actually retrieving the information from memory.",
+        },
+        {
+          text: "“Ask me a question, then wait until I answer before telling me.”",
           feedback: "You actually have to recall and use what you know.",
         },
-        { text: "“Tell me what will be on the test.”", feedback: "AI does not necessarily know what your teacher will test." },
+        { text: "“Tell me exactly what will be on the test.”", feedback: "AI does not necessarily know what your teacher will test." },
       ],
       correctIndex: 2,
       concept: "active_study",
@@ -350,13 +368,22 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "Which prompt best tells AI what kind of help you want?",
       options: [
-        { text: "“Help.”", feedback: "This doesn't say what you're stuck on or what kind of help you want." },
-        { text: "“Do this.”", feedback: "This doesn't explain the problem or what kind of support would actually help." },
         {
-          text: "“I'm confused about why seasons happen. Explain it simply, then ask me one question to check my understanding.”",
+          text: "“I need help with my science homework tonight, so please just do the whole thing.”",
+          feedback: "It is clear about what you want, but what you want is AI doing the assignment.",
+        },
+        {
+          text: "“Tell me everything there is to know about why seasons happen.”",
+          feedback: "It names the topic but not the kind of help, so you'd get a wall of text and no idea what to do next.",
+        },
+        {
+          text: "“I'm confused about why seasons happen. Explain it simply, then ask me a question.”",
           feedback: "It names the problem, the kind of help, and what the student will still do.",
         },
-        { text: "“Make school easier.”", feedback: "This is too vague for AI to know what you actually need." },
+        {
+          text: "“Make my science class way easier before the test.”",
+          feedback: "There is no actual problem here for AI to work with, so any answer would be a guess.",
+        },
       ],
       correctIndex: 2,
       concept: "clear_learning_prompt",

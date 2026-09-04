@@ -193,7 +193,7 @@ export const module4: ModuleContent = {
           feedback: "Even half the assignment is still the assignment, which permission for studying doesn't cover.",
         },
         {
-          text: "AI can be used anywhere because studying was allowed",
+          text: "AI can be used anywhere in the course because studying was allowed",
           feedback: "Where you use it doesn't matter — the permission was for studying, not for completing the assignment.",
         },
       ],
@@ -257,7 +257,7 @@ export const module4: ModuleContent = {
           feedback: "Helping your assignment doesn't give you permission to share someone else's personal photo.",
         },
         {
-          text: "Upload it if you remove the classmate's name",
+          text: "Upload it as long as you remove the classmate's name first",
           feedback: "Removing the name doesn't fix it — it's still their personal photo, shared without asking.",
         },
         {
@@ -300,13 +300,19 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "Your teacher allows AI to check spelling but not rewrite sentences.",
       options: [
-        { text: "“Rewrite this paragraph.”", feedback: "A full rewrite is far more than checking spelling." },
+        { text: "“Rewrite this paragraph so it reads better than it does now.”", feedback: "A full rewrite is far more than checking spelling." },
         {
           text: "“Tell me which words are misspelled without rewriting anything.”",
           feedback: "It stays inside the exact permission the teacher gave.",
         },
-        { text: "“Make my sentences stronger.”", feedback: "Strengthening sentences is a writing change, not a spelling check." },
-        { text: "“Change my writing style.”", feedback: "Changing your style has nothing to do with spelling — that's outside the permission." },
+        {
+          text: "“Make my sentences stronger and clearer.”",
+          feedback: "Strengthening sentences is a writing change, not a spelling check.",
+        },
+        {
+          text: "“Change my writing style to sound more formal.”",
+          feedback: "Changing your style has nothing to do with spelling — that's outside the permission.",
+        },
       ],
       correctIndex: 1,
       concept: "limited_permission",
@@ -322,7 +328,7 @@ export const module4: ModuleContent = {
       stem: "Which is the safest way to ask AI about a friend's situation?",
       options: [
         {
-          text: "Paste their entire private conversation",
+          text: "Paste their entire private conversation into the chat",
           feedback: "The whole conversation includes details that are your friend's to share, not yours.",
         },
         {
@@ -351,13 +357,13 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "Which statement is best?",
       options: [
-        { text: "If AI exists, students have the right to use it on any assignment", feedback: "Availability does not equal permission." },
-        { text: "AI is always cheating", feedback: "Many AI uses can support learning when allowed." },
+        { text: "If the tool exists, students have the right to use it on any assignment they get", feedback: "Availability does not equal permission." },
+        { text: "Using AI on schoolwork is always a form of cheating", feedback: "Many AI uses can support learning when allowed." },
         {
-          text: "Whether AI is appropriate depends on the task, the learning goal, and the teacher's instructions",
+          text: "Whether AI fits depends on the task, the goal, and the teacher's instructions",
           feedback: "Context changes the answer.",
         },
-        { text: "AI is fine if nobody notices", feedback: "Hiding a choice does not make it appropriate." },
+        { text: "AI is fine as long as nobody notices", feedback: "Hiding a choice does not make it appropriate." },
       ],
       correctIndex: 2,
       concept: "overall_judgment",
