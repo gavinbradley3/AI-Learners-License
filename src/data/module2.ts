@@ -61,13 +61,22 @@ export const module2: ModuleContent = {
       ],
       prompt: "What should you ask AI?",
       options: [
-        { label: "“Make this way better.”", feedback: "That asks AI to take over some of the revising. Asking for questions or feedback keeps the decisions with you." },
-        { label: "“Rewrite this at a higher level.”", feedback: "That asks AI to take over some of the revising. Asking for questions or feedback keeps the decisions with you." },
+        {
+          label: "“Make this way better.”",
+          feedback: "“Better” is vague enough that AI would end up making the actual writing decisions for you.",
+        },
+        {
+          label: "“Rewrite this at a higher level.”",
+          feedback: "A rewrite means AI produces new writing, not feedback on what you already wrote.",
+        },
         {
           label: "“Read my response and ask me two questions about ideas that need more explanation. Don't rewrite anything.”",
           feedback: "Strong choice. AI helps you notice weaknesses, but the improvements still come from you.",
         },
-        { label: "“Replace anything that sounds weak.”", feedback: "That asks AI to take over some of the revising. Asking for questions or feedback keeps the decisions with you." },
+        {
+          label: "“Replace anything that sounds weak.”",
+          feedback: "Replacing text is AI doing the revising — feedback would point out the weak part and let you fix it.",
+        },
       ],
       correctIndex: 2,
       continueLabel: "Continue",
@@ -218,13 +227,22 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "You want feedback on your writing without having AI rewrite it.",
       options: [
-        { text: "“Fix everything.”", feedback: "This prompt hands part or all of the revision work to AI instead of asking for feedback." },
-        { text: "“Make this sound smarter.”", feedback: "This prompt hands part or all of the revision work to AI instead of asking for feedback." },
+        {
+          text: "“Fix everything.”",
+          feedback: "That's a full rewrite request — it hands the actual revising to AI instead of just pointing out where to look.",
+        },
+        {
+          text: "“Make this sound smarter.”",
+          feedback: "That asks AI to improve the writing itself, not just flag where your reasoning is unclear.",
+        },
         {
           text: "“Tell me the two places where my reasoning is hardest to follow. Don't rewrite them.”",
-          feedback: "This keeps the decisions and rewriting with you.",
+          feedback: "This asks AI to point out what's unclear while leaving every rewriting decision to you.",
         },
-        { text: "“Write a stronger version.”", feedback: "This prompt hands part or all of the revision work to AI instead of asking for feedback." },
+        {
+          text: "“Write a stronger version.”",
+          feedback: "A stronger version would be AI's writing, not feedback on yours.",
+        },
       ],
       correctIndex: 2,
       concept: "feedback_vs_rewriting",
@@ -239,13 +257,22 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "You have no idea how to start a large project. AI use is allowed for planning.",
       options: [
-        { text: "“Complete the project.”", feedback: "AI would create the product." },
+        {
+          text: "“Complete the project.”",
+          feedback: "That skips the planning step you're supposed to do — AI would be creating the whole product outright.",
+        },
         {
           text: "“Break the task into six smaller steps without creating the project content.”",
           feedback: "AI can reduce the size of the problem without taking over the actual work.",
         },
-        { text: "“Create everything and I'll edit it.”", feedback: "AI would create the product." },
-        { text: "“Find someone else's project to copy.”", feedback: "Copying another project does not support your learning." },
+        {
+          text: "“Create everything and I'll edit it.”",
+          feedback: "Editing afterward doesn't change who actually did the work — AI still created the project.",
+        },
+        {
+          text: "“Find and adapt someone else's completed project for me.”",
+          feedback: "That's still submitting someone else's project idea and work, not the planning support your teacher allowed.",
+        },
       ],
       correctIndex: 1,
       concept: "task_breakdown",
@@ -260,10 +287,16 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "You have tried a math problem and are stuck.",
       options: [
-        { text: "“Answer it.”", feedback: "These give away much more of the problem-solving." },
+        { text: "“Answer it.”", feedback: "A full answer removes the exact problem-solving you're supposed to practise." },
         { text: "“Give me one hint about my next step.”", feedback: "Start with the smallest amount of help that gets you moving again." },
-        { text: "“Show every step.”", feedback: "These give away much more of the problem-solving." },
-        { text: "“Do the difficult part.”", feedback: "These give away much more of the problem-solving." },
+        {
+          text: "“Show every step.”",
+          feedback: "Seeing every step is nearly the same as getting the answer — there's nothing left for you to work out.",
+        },
+        {
+          text: "“Do the difficult part.”",
+          feedback: "AI would be doing the one part of the problem that's actually yours to work through.",
+        },
       ],
       correctIndex: 1,
       concept: "graduated_help",
@@ -278,8 +311,8 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "What makes this prompt useful? “Ask me three questions that will help me improve my project idea.”",
       options: [
-        { text: "AI creates the project", feedback: "You still create and decide." },
-        { text: "AI makes decisions for you", feedback: "You still create and decide." },
+        { text: "AI creates the project", feedback: "This prompt doesn't ask AI to create anything — it asks for questions, not a finished project." },
+        { text: "AI makes decisions for you", feedback: "Questions aren't decisions — you're still the one deciding what to do with them." },
         { text: "AI pushes you to think about your own idea", feedback: "Questions can push your thinking without replacing it." },
         { text: "AI guarantees the idea is good", feedback: "AI cannot guarantee quality." },
       ],
@@ -296,8 +329,8 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "Which study prompt gives you the most active practice?",
       options: [
-        { text: "“Summarize the whole unit.”", feedback: "These may support review, but they are more passive." },
-        { text: "“Give me notes to read.”", feedback: "These may support review, but they are more passive." },
+        { text: "“Summarize the whole unit.”", feedback: "A summary is something you'd read, not something you'd have to recall yourself." },
+        { text: "“Give me notes to read.”", feedback: "Reading notes is more passive than actually retrieving the information from memory." },
         {
           text: "“Ask me questions one at a time and make me answer before giving feedback.”",
           feedback: "You actually have to recall and use what you know.",
@@ -317,13 +350,13 @@ export const module2: ModuleContent = {
       moduleId: "module2",
       stem: "Which prompt best tells AI what kind of help you want?",
       options: [
-        { text: "“Help.”", feedback: "AI has to guess what useful help would look like." },
-        { text: "“Do this.”", feedback: "AI has to guess what useful help would look like." },
+        { text: "“Help.”", feedback: "This doesn't say what you're stuck on or what kind of help you want." },
+        { text: "“Do this.”", feedback: "This doesn't explain the problem or what kind of support would actually help." },
         {
           text: "“I'm confused about why seasons happen. Explain it simply, then ask me one question to check my understanding.”",
           feedback: "It names the problem, the kind of help, and what the student will still do.",
         },
-        { text: "“Make school easier.”", feedback: "AI has to guess what useful help would look like." },
+        { text: "“Make school easier.”", feedback: "This is too vague for AI to know what you actually need." },
       ],
       correctIndex: 2,
       concept: "clear_learning_prompt",

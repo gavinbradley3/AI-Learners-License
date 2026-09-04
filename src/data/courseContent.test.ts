@@ -60,6 +60,25 @@ describe("courseContent shape", () => {
     }
   });
 
+  it("never gives two options in the same module quiz question identical feedback", () => {
+    for (const id of MODULE_IDS) {
+      for (const q of courseContent.modules[id].quizBank) {
+        const feedbackTexts = q.options.map((o) => o.feedback);
+        expect(new Set(feedbackTexts).size, `${q.id} has duplicate option feedback`).toBe(feedbackTexts.length);
+      }
+    }
+  });
+
+  it("never gives two options in a module practice (choice) screen identical feedback", () => {
+    for (const id of MODULE_IDS) {
+      for (const screen of courseContent.modules[id].screens) {
+        if (screen.type !== "choice") continue;
+        const feedbackTexts = screen.options.map((o) => o.feedback);
+        expect(new Set(feedbackTexts).size, `${screen.id} has duplicate option feedback`).toBe(feedbackTexts.length);
+      }
+    }
+  });
+
   it("selects a real module attempt and a real final challenge without error", () => {
     const moduleSelection = selectModuleQuestions({
       bank: courseContent.modules.module1.quizBank,

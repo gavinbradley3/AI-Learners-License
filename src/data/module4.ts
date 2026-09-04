@@ -180,19 +180,28 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "Your teacher allows AI for studying but not for completing the assignment.",
       options: [
-        { text: "AI can answer the assignment at home", feedback: "This expands the permission beyond what the teacher gave." },
+        {
+          text: "AI can answer the assignment at home",
+          feedback: "Doing it at home doesn't change what was actually permitted — only studying was allowed, not the assignment itself.",
+        },
         {
           text: "AI can help you practise before you complete the work yourself",
           feedback: "Permission for studying does not automatically extend to the assignment.",
         },
-        { text: "AI can write half the assignment", feedback: "This expands the permission beyond what the teacher gave." },
-        { text: "AI can be used anywhere because studying was allowed", feedback: "This expands the permission beyond what the teacher gave." },
+        {
+          text: "AI can write half the assignment",
+          feedback: "Even half the assignment is still the assignment, which permission for studying doesn't cover.",
+        },
+        {
+          text: "AI can be used anywhere because studying was allowed",
+          feedback: "Where you use it doesn't matter — the permission was for studying, not for completing the assignment.",
+        },
       ],
       correctIndex: 1,
       concept: "permission_boundary",
       correction: {
-        prompt: "“AI allowed for study practice” means “AI allowed to write the assignment.”",
-        options: ["True", "False"],
+        prompt: "Your teacher allows AI to help you review for a quiz, but says nothing about using it during homework that counts for marks. Can you assume homework is covered too?",
+        options: ["Yes, review permission covers it", "No, ask before using it there too"],
         correctIndex: 1,
       },
     },
@@ -201,16 +210,22 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "The instructions do not say whether AI may be used for brainstorming.",
       options: [
-        { text: "Guess", feedback: "This makes an assumption instead of checking." },
+        { text: "Guess", feedback: "Guessing risks getting it wrong when you could have just asked." },
         { text: "Ask the teacher", feedback: "When the rule is unclear, asking is faster than guessing wrong." },
-        { text: "Use it secretly", feedback: "This makes an assumption instead of checking." },
-        { text: "Assume every AI use is allowed", feedback: "This makes an assumption instead of checking." },
+        {
+          text: "Use it secretly",
+          feedback: "Using it quietly doesn't make it allowed — it just avoids finding out the real answer.",
+        },
+        {
+          text: "Assume every AI use is allowed",
+          feedback: "Assuming the widest possible permission is still a guess, not a confirmed answer.",
+        },
       ],
       correctIndex: 1,
       concept: "permission_clarification",
       correction: {
-        prompt: "Not sure whether AI is allowed?",
-        options: ["Ask", "Guess"],
+        prompt: "A group-work rubric doesn't mention AI at all. A friend says that means it must be fine. Should you go along with that?",
+        options: ["No, check with the teacher first", "Yes, no mention means no rule"],
         correctIndex: 0,
       },
     },
@@ -219,10 +234,10 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "Which should NOT be entered into an AI tool?",
       options: [
-        { text: "“Explain gravity simply.”", feedback: "This does not require private personal information." },
-        { text: "A made-up practice paragraph", feedback: "This does not require private personal information." },
+        { text: "“Explain gravity simply.”", feedback: "That's a general science question — nothing private about it." },
+        { text: "A made-up practice paragraph", feedback: "A made-up paragraph doesn't involve any real personal information." },
         { text: "Your school account password", feedback: "Passwords are private security information." },
-        { text: "“Quiz me on fractions.”", feedback: "This does not require private personal information." },
+        { text: "“Quiz me on fractions.”", feedback: "That's a practice request, not anything private or identifying." },
       ],
       correctIndex: 2,
       concept: "privacy",
@@ -237,8 +252,14 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "A classmate sends you a private photo.",
       options: [
-        { text: "Upload it to AI if it helps your assignment", feedback: "Removing a name does not automatically give you permission to share a personal photo." },
-        { text: "Upload it if you remove the classmate's name", feedback: "Removing a name does not automatically give you permission to share a personal photo." },
+        {
+          text: "Upload it to AI if it helps your assignment",
+          feedback: "Helping your assignment doesn't give you permission to share someone else's personal photo.",
+        },
+        {
+          text: "Upload it if you remove the classmate's name",
+          feedback: "Removing the name doesn't fix it — it's still their personal photo, shared without asking.",
+        },
         {
           text: "Do not upload someone else's personal photo without permission",
           feedback: "Other people's information deserves protection too.",
@@ -258,10 +279,13 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "AI gives you incorrect information that you submit. Who is responsible for what you submitted?",
       options: [
-        { text: "Only the AI company", feedback: "The work was submitted under your name." },
-        { text: "Nobody", feedback: "The work was submitted under your name." },
+        { text: "Only the AI company", feedback: "The AI company didn't submit anything under your name — you did." },
+        {
+          text: "Nobody",
+          feedback: "Someone is always responsible for submitted work, and that's the student who turned it in.",
+        },
         { text: "You", feedback: "You are responsible for checking and understanding the work you submit." },
-        { text: "Your classmate", feedback: "The work was submitted under your name." },
+        { text: "Your classmate", feedback: "Your classmate had nothing to do with what you submitted." },
       ],
       correctIndex: 2,
       concept: "responsibility",
@@ -276,20 +300,20 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "Your teacher allows AI to check spelling but not rewrite sentences.",
       options: [
-        { text: "“Rewrite this paragraph.”", feedback: "This goes beyond spelling." },
+        { text: "“Rewrite this paragraph.”", feedback: "A full rewrite is far more than checking spelling." },
         {
           text: "“Tell me which words are misspelled without rewriting anything.”",
           feedback: "It stays inside the exact permission the teacher gave.",
         },
-        { text: "“Make my sentences stronger.”", feedback: "This goes beyond spelling." },
-        { text: "“Change my writing style.”", feedback: "This goes beyond spelling." },
+        { text: "“Make my sentences stronger.”", feedback: "Strengthening sentences is a writing change, not a spelling check." },
+        { text: "“Change my writing style.”", feedback: "Changing your style has nothing to do with spelling — that's outside the permission." },
       ],
       correctIndex: 1,
       concept: "limited_permission",
       correction: {
-        prompt: "Permission for spelling means permission for rewriting.",
-        options: ["True", "False"],
-        correctIndex: 1,
+        prompt: "Your teacher allows AI to suggest better vocabulary words, but says nothing about sentence structure. Can AI reorganize your sentences too?",
+        options: ["No, that goes beyond vocabulary", "Yes, it's a similar kind of help"],
+        correctIndex: 0,
       },
     },
     {
@@ -297,13 +321,22 @@ export const module4: ModuleContent = {
       moduleId: "module4",
       stem: "Which is the safest way to ask AI about a friend's situation?",
       options: [
-        { text: "Paste their entire private conversation", feedback: "This shares information that is not yours to expose." },
-        { text: "Include their full name and school", feedback: "This shares information that is not yours to expose." },
+        {
+          text: "Paste their entire private conversation",
+          feedback: "The whole conversation includes details that are your friend's to share, not yours.",
+        },
+        {
+          text: "Include their full name and school",
+          feedback: "Their name and school identify them — exactly the details a general question can leave out.",
+        },
         {
           text: "Ask a general question without identifying private details",
           feedback: "You can often ask for general information without exposing another person's private details.",
         },
-        { text: "Upload screenshots of the conversation", feedback: "This shares information that is not yours to expose." },
+        {
+          text: "Upload screenshots of the conversation",
+          feedback: "A screenshot exposes the same private details as pasting the text, just as an image.",
+        },
       ],
       correctIndex: 2,
       concept: "privacy_preserving_question",

@@ -134,7 +134,7 @@ export const module1: ModuleContent = {
       options: [
         {
           label: "Ask AI to rewrite the entire paragraph so it sounds better.",
-          feedback: "That moves AI from feedback into creating part of the writing. The teacher allowed feedback, not replacement writing.",
+          feedback: "A full rewrite means AI is doing the writing, not just pointing out a problem.",
         },
         {
           label: "Ask AI to identify one place where your explanation is confusing.",
@@ -142,11 +142,11 @@ export const module1: ModuleContent = {
         },
         {
           label: "Ask AI to add three better examples directly into your paragraph.",
-          feedback: "That moves AI from feedback into creating part of the writing. The teacher allowed feedback, not replacement writing.",
+          feedback: "Adding new examples means AI is contributing content, not just giving feedback.",
         },
         {
           label: "Ask AI to create a new paragraph and combine it with yours.",
-          feedback: "That moves AI from feedback into creating part of the writing. The teacher allowed feedback, not replacement writing.",
+          feedback: "Combining AI's paragraph with yours still means part of the writing came from AI, not you.",
         },
       ],
       correctIndex: 1,
@@ -356,13 +356,22 @@ export const module1: ModuleContent = {
       moduleId: "module1",
       stem: "Why might asking AI for an answer immediately sometimes hurt learning?",
       options: [
-        { text: "AI always gives wrong answers", feedback: "AI can be right or wrong. That is not the main issue here." },
-        { text: "Students should never get help", feedback: "Help is useful when it supports the learning." },
+        {
+          text: "AI's answers are sometimes inaccurate, so they're risky to rely on",
+          feedback: "That's a real concern about AI, but it's not the reason immediate answers hurt learning here — the issue is the practice you'd skip, not accuracy.",
+        },
+        {
+          text: "Getting the answer quickly leaves more time to check your other work",
+          feedback: "Saving time doesn't replace the practice you skip by not working through the problem yourself.",
+        },
         {
           text: "Some thinking and struggling through a problem is useful practice",
           feedback: "Working through some difficulty can strengthen understanding.",
         },
-        { text: "Teachers do not like technology", feedback: "The issue is what helps you learn, not whether technology is liked." },
+        {
+          text: "A teacher might think you cheated even if you solved it honestly",
+          feedback: "That's a fair worry, but it's not why skipping the struggle actually hurts your learning.",
+        },
       ],
       correctIndex: 2,
       concept: "productive_struggle",
@@ -386,7 +395,7 @@ export const module1: ModuleContent = {
           text: "AI still created the main ideas and response",
           feedback: "Changing wording does not change who produced the main thinking.",
         },
-        { text: "It is always okay if AI is only used at home", feedback: "Where AI is used does not decide whether the use fits the assignment." },
+        { text: "It is okay because AI was only used at home, not at school", feedback: "Where AI is used does not decide whether the use fits the assignment." },
       ],
       correctIndex: 2,
       concept: "superficial_rewriting",
@@ -412,8 +421,8 @@ export const module1: ModuleContent = {
       correctIndex: 2,
       concept: "permission_clarification",
       correction: {
-        prompt: "The AI rule for an assignment is unclear. What should you do?",
-        options: ["Guess", "Ask the teacher"],
+        prompt: "Your class starts using a new app, and you're not sure if its built-in AI features are allowed. What's the safer move?",
+        options: ["Try it and see what happens", "Ask before using it"],
         correctIndex: 1,
       },
     },

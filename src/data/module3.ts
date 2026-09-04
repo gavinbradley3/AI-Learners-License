@@ -142,9 +142,9 @@ export const module3: ModuleContent = {
         },
         {
           id: "M3-8-3",
-          prompt: "“Quiz me on the notes I pasted.”",
+          prompt: "“Quiz me on the definitions from my own study notes.”",
           correctIndex: 0,
-          feedback: "The AI is using material you provided, although you should still watch for mistakes.",
+          feedback: "This uses your own notes as the source, so there's nothing new to fact-check — it's just practice recalling what you already wrote down.",
         },
         {
           id: "M3-8-4",
@@ -156,7 +156,7 @@ export const module3: ModuleContent = {
           id: "M3-8-5",
           prompt: "“Explain this definition from my teacher's handout in simpler words.”",
           correctIndex: 0,
-          feedback: "You can compare the explanation with the original material.",
+          feedback: "Right — this only rephrases material from a source you already have, so you can quickly compare it against the original if anything seems off.",
         },
       ],
       continueLabel: "Continue",
@@ -192,13 +192,16 @@ export const module3: ModuleContent = {
       moduleId: "module3",
       stem: "What is an AI hallucination?",
       options: [
-        { text: "When the screen flashes", feedback: "That does not describe an AI hallucination." },
+        { text: "When the screen flashes", feedback: "A screen flash is a display glitch, not AI generating false information." },
         {
           text: "When AI confidently gives false or made-up information",
           feedback: "The dangerous part is that made-up information can sound real.",
         },
-        { text: "When a student disagrees with AI", feedback: "That does not describe an AI hallucination." },
-        { text: "When AI loads slowly", feedback: "That does not describe an AI hallucination." },
+        {
+          text: "When a student disagrees with AI",
+          feedback: "Disagreeing with AI isn't the same as AI inventing false information — sometimes the student is right.",
+        },
+        { text: "When AI loads slowly", feedback: "Slow loading is a performance issue, not AI making something up." },
       ],
       correctIndex: 1,
       concept: "hallucination",
@@ -224,7 +227,7 @@ export const module3: ModuleContent = {
       correctIndex: 2,
       concept: "invented_quote",
       correction: {
-        prompt: "You cannot find an AI-generated quote in the original source. Use it?",
+        prompt: "AI cites a specific law that you cannot find mentioned anywhere else. Use it in your project?",
         options: ["Yes", "No"],
         correctIndex: 1,
       },
@@ -245,7 +248,7 @@ export const module3: ModuleContent = {
       correctIndex: 1,
       concept: "source_verification",
       correction: {
-        prompt: "Before citing a website AI suggests, should you actually open it?",
+        prompt: "AI gives you a book title to reference. Should you make sure the book actually exists before citing it?",
         options: ["Yes", "No"],
         correctIndex: 0,
       },
@@ -276,13 +279,19 @@ export const module3: ModuleContent = {
       moduleId: "module3",
       stem: "AI answers your question differently twice.",
       options: [
-        { text: "The newest answer must be correct", feedback: "None of these methods proves which answer is accurate." },
+        {
+          text: "The newest answer must be correct",
+          feedback: "Being newer doesn't make an answer more accurate — AI can be wrong on any attempt.",
+        },
         {
           text: "AI output should be evaluated rather than automatically trusted",
           feedback: "Different answers are another reminder that AI is not an automatic authority.",
         },
-        { text: "The longest answer is correct", feedback: "None of these methods proves which answer is accurate." },
-        { text: "Choose the answer you like more", feedback: "None of these methods proves which answer is accurate." },
+        { text: "The longest answer is correct", feedback: "Length has nothing to do with which answer is actually true." },
+        {
+          text: "Choose the answer you like more",
+          feedback: "Which answer you prefer doesn't tell you which one is actually correct.",
+        },
       ],
       correctIndex: 1,
       concept: "uncertainty",
@@ -297,8 +306,14 @@ export const module3: ModuleContent = {
       moduleId: "module3",
       stem: "Which information most needs independent checking?",
       options: [
-        { text: "“Give me a fictional superhero name.”", feedback: "This is an intentionally creative request." },
-        { text: "“Make up a practice sentence using a semicolon.”", feedback: "This is an intentionally creative request." },
+        {
+          text: "“Give me a fictional superhero name.”",
+          feedback: "A made-up superhero name isn't a factual claim anyone would need to verify.",
+        },
+        {
+          text: "“Make up a practice sentence using a semicolon.”",
+          feedback: "You're asking AI to invent an example, not state a fact — nothing here needs checking.",
+        },
         {
           text: "“What percentage of Canadians live in Alberta?”",
           feedback: "That is a factual statistic that could be used as real information.",
@@ -318,15 +333,21 @@ export const module3: ModuleContent = {
       moduleId: "module3",
       stem: "You ask AI, “Are you sure this fact is correct?” It says, “Yes, absolutely.”",
       options: [
-        { text: "It is confirmed", feedback: "Repetition or confidence does not verify a claim." },
-        { text: "Use it because AI sounded certain", feedback: "Repetition or confidence does not verify a claim." },
+        { text: "It is confirmed", feedback: "AI repeating itself isn't the same as an outside source confirming the claim." },
+        {
+          text: "Use it because AI sounded certain",
+          feedback: "Sounding certain doesn't make a claim true — confidence isn't proof.",
+        },
         { text: "Check another reliable source", feedback: "AI agreeing with itself is not independent evidence." },
-        { text: "Ask AI to say it one more time", feedback: "Repetition or confidence does not verify a claim." },
+        {
+          text: "Ask AI to say it one more time",
+          feedback: "Asking again just gets you the same unverified answer a third time.",
+        },
       ],
       correctIndex: 2,
       concept: "independent_confirmation",
       correction: {
-        prompt: "Does asking the same AI twice count as checking another source?",
+        prompt: "A friend insists a rumor is true, then repeats it just as confidently when you ask again. Does repeating it make it more true?",
         options: ["Yes", "No"],
         correctIndex: 1,
       },
