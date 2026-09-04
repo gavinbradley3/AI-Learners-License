@@ -8,6 +8,11 @@ export interface ChoiceListProps {
   onSelect: (index: number) => void;
 }
 
+/** Presentation-only option letter (A, B, C, D…) — never used for scoring, which stays index/id based. */
+function letterFor(index: number): string {
+  return String.fromCharCode(65 + index);
+}
+
 export function ChoiceList({ options, selectedIndex, correctIndex, onSelect }: ChoiceListProps) {
   const locked = selectedIndex !== null;
 
@@ -18,6 +23,7 @@ export function ChoiceList({ options, selectedIndex, correctIndex, onSelect }: C
         const isCorrect = correctIndex !== null && index === correctIndex;
         const showResult = isSelected && correctIndex !== null;
         const statusText = showResult ? (isCorrect ? "Correct" : "Not quite") : null;
+        const letter = letterFor(index);
 
         const classes = [
           styles.choice,
@@ -37,8 +43,11 @@ export function ChoiceList({ options, selectedIndex, correctIndex, onSelect }: C
               onClick={() => {
                 if (!locked) onSelect(index);
               }}
-              aria-label={statusText ? `${text} — selected, ${statusText.toLowerCase()}` : undefined}
+              aria-label={
+                statusText ? `${letter}. ${text} — selected, ${statusText.toLowerCase()}` : undefined
+              }
             >
+              <span className={styles.letter}>{letter}.</span>
               <span className={styles.label}>{text}</span>
               {statusText && (
                 <span className={styles.statusTag}>

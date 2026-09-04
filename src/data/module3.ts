@@ -14,24 +14,19 @@ export const module3: ModuleContent = {
         { quote: "I think the answer might be 1867." },
         "or",
         { quote: "The correct answer is definitely 1867. This is a well-established historical fact." },
-        "The second sounds more confident.",
-        "But confidence is not proof.",
-        "AI can sound certain and still be wrong.",
+        "The second sounds more confident. But confidence is not proof. AI can sound certain and still be wrong.",
       ],
-      continueLabel: "Continue",
-    },
-    {
-      type: "info",
-      id: "M3-2",
-      heading: "AI can make things up",
-      blocks: [
-        "You may hear AI hallucination. It means:",
-        { quote: "AI gives information that is false or made up, sometimes while sounding completely confident." },
+      sections: [
+        {
+          heading: "AI can make things up",
+          blocks: [
+            "You may hear AI hallucination. It means:",
+            { quote: "AI gives information that is false or made up, sometimes while sounding completely confident." },
+            "It can invent facts, quotations, book details, website links, sources, statistics, and names.",
+          ],
+          note: "That does not mean everything AI says is false. It means AI output needs judgment.",
+        },
       ],
-      bulletGroups: [
-        { heading: "It can invent:", items: ["facts", "quotations", "book details", "website links", "sources", "statistics", "names"] },
-      ],
-      note: "That does not mean everything AI says is false. It means AI output needs judgment.",
       continueLabel: "Continue",
     },
     {
@@ -112,20 +107,19 @@ export const module3: ModuleContent = {
         },
       ],
       note: "Do not trust a citation just because it looks professional. If you plan to use a source, open it and check it.",
-      continueLabel: "Continue",
-    },
-    {
-      type: "info",
-      id: "M3-7",
-      heading: "Bias",
-      blocks: [
-        "Bias means a response may unfairly favour one viewpoint or group.",
-        "Human-created information can contain:",
+      sections: [
+        {
+          heading: "Bias",
+          blocks: [
+            "Bias means a response may unfairly favour one viewpoint or group.",
+            "Human-created information can contain:",
+          ],
+          bulletGroups: [
+            { items: ["stereotypes", "missing viewpoints", "unfair assumptions", "disagreements"] },
+          ],
+          note: "When a topic has different perspectives, ask: “Whose viewpoint might be missing?”",
+        },
       ],
-      bulletGroups: [
-        { items: ["stereotypes", "missing viewpoints", "unfair assumptions", "disagreements"] },
-      ],
-      note: "When a topic has different perspectives, ask: “Whose viewpoint might be missing?”",
       continueLabel: "Continue",
     },
     {

@@ -1,5 +1,5 @@
 .bulletGroup {
-  margin: 0 0 var(--space-4);
+  margin: 0 0 var(--space-3);
 }
 
 .bulletGroup:last-child {
@@ -27,4 +27,18 @@
   border-radius: var(--radius-md);
   background: var(--color-slate-100);
   color: var(--color-text-primary);
+}
+
+.section {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-line);
+}
+
+.sectionHeading {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  color: var(--color-navy-900);
 }

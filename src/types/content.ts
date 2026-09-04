@@ -64,6 +64,13 @@ export interface ChoiceOption {
   feedback: string;
 }
 
+export interface InfoSection {
+  heading?: string;
+  blocks?: readonly ContextBlock[];
+  bulletGroups?: readonly { heading?: string; items: readonly string[] }[];
+  note?: string;
+}
+
 export interface InfoScreen {
   type: "info";
   id: string;
@@ -72,6 +79,14 @@ export interface InfoScreen {
   blocks?: readonly ContextBlock[];
   bulletGroups?: readonly { heading?: string; items: readonly string[] }[];
   note?: string;
+  /**
+   * Additional short teaching beats grouped onto this same screen, each with its own
+   * sub-heading. Used to combine adjacent authored subsections that form one logical
+   * idea, per BUILD_SPEC §11 ("do not make every card a separate full-page route if a
+   * small sequence can live cleanly inside one screen") — without losing the ability to
+   * scan each beat under its own heading.
+   */
+  sections?: readonly InfoSection[];
   continueLabel: string;
 }
 
@@ -88,16 +103,24 @@ export interface ChoiceScreen {
   continueLabel: string;
 }
 
-/** A sequential deck of small scenarios sharing one fixed label set (e.g. Quick Sort, Trust Meter). */
+/**
+ * A sequential deck of small scenarios (e.g. Quick Sort, Trust Meter, Boundary practice):
+ * one card at a time, choose, lock, see feedback, continue. Items normally share one fixed
+ * label set, but a given item may supply its own pair when its scenario needs a distinct
+ * judgment call (e.g. "Outside the boundary" vs. "Safer use") rather than a generic one.
+ */
 export interface DeckScreen {
   type: "deck";
   id: string;
   heading?: string;
   intro?: string;
-  choiceLabels: readonly string[];
+  /** Default label set for items that don't specify their own. */
+  choiceLabels?: readonly string[];
   items: readonly {
     id: string;
     prompt: string;
+    /** Overrides `choiceLabels` for this item only. */
+    choiceLabels?: readonly string[];
     correctIndex: number;
     feedback: string;
   }[];

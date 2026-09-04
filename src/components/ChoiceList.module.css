@@ -43,6 +43,18 @@
   opacity: 0.6;
 }
 
+.letter {
+  flex-shrink: 0;
+  min-width: 1.4em;
+  font-weight: 700;
+  color: var(--color-slate-500);
+}
+
+.correct .letter,
+.incorrect .letter {
+  color: inherit;
+}
+
 .label {
   flex: 1;
 }

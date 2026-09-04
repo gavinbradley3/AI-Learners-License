@@ -16,18 +16,17 @@ export const module2: ModuleContent = {
         { quote: "Ask me one science question at a time. Don't show the answer until I respond." },
         "Same AI. Very different job.",
       ],
-      continueLabel: "Continue",
-    },
-    {
-      type: "info",
-      id: "M2-2",
-      heading: "Four useful AI jobs",
-      blocks: ["Instead of making AI your answer machine, try making it your:"],
-      bulletGroups: [
-        { heading: "Tutor", items: ["“Explain this in simpler language.”"] },
-        { heading: "Coach", items: ["“Give me one hint without solving it.”"] },
-        { heading: "Practice partner", items: ["“Quiz me one question at a time.”"] },
-        { heading: "Feedback tool", items: ["“Tell me where my explanation is unclear. Don't rewrite it.”"] },
+      sections: [
+        {
+          heading: "Four useful AI jobs",
+          blocks: ["Instead of making AI your answer machine, try making it your:"],
+          bulletGroups: [
+            { heading: "Tutor", items: ["“Explain this in simpler language.”"] },
+            { heading: "Coach", items: ["“Give me one hint without solving it.”"] },
+            { heading: "Practice partner", items: ["“Quiz me one question at a time.”"] },
+            { heading: "Feedback tool", items: ["“Tell me where my explanation is unclear. Don't rewrite it.”"] },
+          ],
+        },
       ],
       continueLabel: "Continue",
     },
@@ -103,18 +102,16 @@ export const module2: ModuleContent = {
           quote:
             "Quiz me on ecosystems one question at a time. After I answer, tell me what I got right and what I should review.",
         },
-        "Why stronger?",
-        "Because you have to retrieve the information from your own brain.",
+        "Why stronger? Because you have to retrieve the information from your own brain.",
       ],
-      continueLabel: "Continue",
-    },
-    {
-      type: "info",
-      id: "M2-7",
-      heading: "Break down a task",
-      blocks: [
-        { quote: "Help me break this assignment into five small steps. Don't create the actual content for me." },
-        "This can help you start without handing over the assignment.",
+      sections: [
+        {
+          heading: "Break down a task",
+          blocks: [
+            { quote: "Help me break this assignment into five small steps. Don't create the actual content for me." },
+            "This can help you start without handing over the assignment.",
+          ],
+        },
       ],
       continueLabel: "Continue",
     },

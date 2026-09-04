@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { ModuleScreen } from "../types";
+import type { InfoSection, ModuleScreen } from "../types";
 import { Card } from "./Card";
 import { Button } from "./Button";
 import { ContextBlocks } from "./ContextBlocks";
@@ -12,22 +12,36 @@ export interface ModuleScreenViewProps {
   onDone: () => void;
 }
 
+function InfoSectionBody({ section }: { section: InfoSection }) {
+  return (
+    <>
+      <ContextBlocks blocks={section.blocks} />
+      {section.bulletGroups?.map((group, i) => (
+        <div className={styles.bulletGroup} key={i}>
+          {group.heading && <p className={styles.bulletHeading}>{group.heading}</p>}
+          <ul>
+            {group.items.map((item, j) => (
+              <li key={j}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {section.note && <p className={styles.note}>{section.note}</p>}
+    </>
+  );
+}
+
 export function ModuleScreenView({ screen, onDone }: ModuleScreenViewProps) {
   if (screen.type === "info") {
     return (
       <Card headingLevel="h1" heading={screen.heading} eyebrow={screen.eyebrow}>
-        <ContextBlocks blocks={screen.blocks} />
-        {screen.bulletGroups?.map((group, i) => (
-          <div className={styles.bulletGroup} key={i}>
-            {group.heading && <p className={styles.bulletHeading}>{group.heading}</p>}
-            <ul>
-              {group.items.map((item, j) => (
-                <li key={j}>{item}</li>
-              ))}
-            </ul>
+        <InfoSectionBody section={screen} />
+        {screen.sections?.map((section, i) => (
+          <div className={styles.section} key={i}>
+            {section.heading && <h2 className={styles.sectionHeading}>{section.heading}</h2>}
+            <InfoSectionBody section={section} />
           </div>
         ))}
-        {screen.note && <p className={styles.note}>{screen.note}</p>}
         <div className="actions-row">
           <Button onClick={onDone}>{screen.continueLabel}</Button>
         </div>
@@ -84,7 +98,7 @@ function DeckScreenView({
       <DeckItem
         key={item.id}
         prompt={item.prompt}
-        choiceLabels={screen.choiceLabels}
+        choiceLabels={item.choiceLabels ?? screen.choiceLabels ?? []}
         correctIndex={item.correctIndex}
         feedback={item.feedback}
         continueLabel={isLast ? screen.continueLabel : "Next"}

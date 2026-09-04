@@ -29,10 +29,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
       "You think of three ideas, then ask AI for ten more before choosing your favourite.",
     ],
     options: [
-      { text: "Fine because you made three yourself", feedback: "The issue is not who selected the idea. The teacher is assessing who generated the ideas." },
-      { text: "Fine because you chose the final idea", feedback: "The issue is not who selected the idea. The teacher is assessing who generated the ideas." },
-      { text: "Not appropriate because idea generation is being assessed", feedback: "The issue is not who selected the idea. The teacher is assessing who generated the ideas." },
-      { text: "Fine if you change the AI idea", feedback: "The issue is not who selected the idea. The teacher is assessing who generated the ideas." },
+      {
+        text: "Fine because you made three yourself",
+        feedback: "Making three ideas first doesn't erase the ten AI-generated ones still sitting in the mix — the teacher wanted to see only what you could generate.",
+      },
+      {
+        text: "Fine because you chose the final idea",
+        feedback: "Choosing which idea to use isn't the same as generating it — the teacher is assessing where the ideas came from, not who picked the winner.",
+      },
+      {
+        text: "Not appropriate because idea generation is being assessed",
+        feedback: "Right — the assignment is specifically testing your own idea generation, and asking AI for more ideas hands that exact skill over.",
+      },
+      {
+        text: "Fine if you change the AI idea",
+        feedback: "Editing an AI-generated idea still starts from AI's idea, not yours — the teacher wanted to see your original thinking.",
+      },
     ],
     correctIndex: 2,
     concept: "assessed_skill",
@@ -69,13 +81,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "tutor",
     stem: "You tried a math problem twice and cannot figure out your next step. AI homework help is allowed.",
     options: [
-      { text: "“Give me the finished answer.”", feedback: "This removes the problem-solving you're meant to practise." },
-      { text: "“Show me exactly what to submit.”", feedback: "This removes the problem-solving you're meant to practise." },
+      {
+        text: "“Give me the finished answer.”",
+        feedback: "A finished answer skips the exact struggle you're supposed to work through — try asking for a hint instead.",
+      },
+      {
+        text: "“Show me exactly what to submit.”",
+        feedback: "Asking what to submit turns AI into the one solving the problem, not you.",
+      },
       {
         text: "“Look at what I tried and give me one hint about my next step.”",
-        feedback: "You have already attempted the problem. A hint gives useful support without taking over the solution.",
+        feedback: "You've already tried twice — a hint that responds to your attempt keeps the next step yours to figure out.",
       },
-      { text: "“Solve it, then I'll copy the process.”", feedback: "This removes the problem-solving you're meant to practise." },
+      {
+        text: "“Solve it, then I'll copy the process.”",
+        feedback: "Copying a process you didn't work out yourself is still someone else's solution, just relabeled as practice.",
+      },
     ],
     correctIndex: 2,
     concept: "productive_struggle",
@@ -91,13 +112,13 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "AI provides:",
     context: [{ quote: "Chen, Melissa. Digital Learning in Canadian Schools. Alberta Education Research Journal, 2025." }, "It looks believable."],
     options: [
-      { text: "Nothing", feedback: "A professional-looking citation can still be invented or inaccurate." },
+      { text: "Nothing", feedback: "Doing nothing means you'd submit a citation you've never actually confirmed exists." },
       {
         text: "Check whether the source actually exists and supports your claim",
-        feedback: "A professional-looking citation can still be invented or inaccurate.",
+        feedback: "Right — a real-looking citation still needs to be found and checked before you rely on it.",
       },
-      { text: "Ask AI to format it more professionally", feedback: "Formatting does not verify whether the source is real." },
-      { text: "Remove the publication year", feedback: "Removing a detail does not verify whether the source is real." },
+      { text: "Ask AI to format it more professionally", feedback: "Better formatting makes a citation look more convincing without making it any more real." },
+      { text: "Remove the publication year", feedback: "Removing a detail doesn't verify the source — it just makes a fake citation harder to check." },
     ],
     correctIndex: 1,
     concept: "source_verification",
@@ -112,13 +133,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "support",
     stem: "AI writes your full reading response. You rewrite several sentences and add your own opening sentence.",
     options: [
-      { text: "The response is now fully yours", feedback: "Changing wording does not automatically move the thinking back to you." },
-      { text: "It depends only on how many words you changed", feedback: "Changing wording does not automatically move the thinking back to you." },
+      {
+        text: "The response is now fully yours",
+        feedback: "Adding one sentence and editing a few others still leaves AI's original thinking underneath most of the response.",
+      },
+      {
+        text: "It depends only on how many words you changed",
+        feedback: "Word count isn't the issue — the issue is who came up with the ideas and reasoning being assessed.",
+      },
       {
         text: "AI still produced much of the thinking you were supposed to demonstrate",
-        feedback: "Changing wording does not automatically move the thinking back to you.",
+        feedback: "Right — most of the understanding this response is supposed to demonstrate still came from AI, not you.",
       },
-      { text: "It is acceptable because the final version is different", feedback: "Changing wording does not automatically move the thinking back to you." },
+      {
+        text: "It is acceptable because the final version is different",
+        feedback: "A different-looking final draft can still be built on someone else's thinking underneath.",
+      },
     ],
     correctIndex: 2,
     concept: "superficial_rewriting",
@@ -155,10 +185,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "AI says:",
     context: [{ quote: "Exactly 71.4% of Canada's freshwater is located in Ontario." }, "It gives no source. You want the statistic on a slide."],
     options: [
-      { text: "Use it because the decimal makes it precise", feedback: "Precision can make a claim look convincing without making it accurate." },
-      { text: "Use it because AI sounds confident", feedback: "Precision can make a claim look convincing without making it accurate." },
-      { text: "Verify the statistic with a reliable source first", feedback: "Precision can make a claim look convincing without making it accurate." },
-      { text: "Round it to 71%", feedback: "Rounding an unverified number does not make it accurate." },
+      {
+        text: "Use it because the decimal makes it precise",
+        feedback: "A precise-looking decimal can be just as made up as a rounded one — precision isn't proof.",
+      },
+      {
+        text: "Use it because AI sounds confident",
+        feedback: "Confidence in how AI says something tells you nothing about whether it's true.",
+      },
+      {
+        text: "Verify the statistic with a reliable source first",
+        feedback: "Right — an unsourced statistic needs an independent check before it goes on a slide.",
+      },
+      {
+        text: "Round it to 71%",
+        feedback: "Rounding the number doesn't touch the real problem: it still hasn't been verified.",
+      },
     ],
     correctIndex: 2,
     concept: "verification",
@@ -173,13 +215,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "privacy",
     stem: "A classmate sends you a private message saying they are struggling with a friendship. You want advice.",
     options: [
-      { text: "Paste their entire message into AI", feedback: "You can ask for general help without exposing someone else's private information." },
-      { text: "Upload screenshots", feedback: "You can ask for general help without exposing someone else's private information." },
+      {
+        text: "Paste their entire message into AI",
+        feedback: "That message is your classmate's private information, not yours to hand to an AI tool.",
+      },
+      {
+        text: "Upload screenshots",
+        feedback: "A screenshot still exposes your classmate's private words and identity.",
+      },
       {
         text: "Ask a general question without sharing identifying or private details",
-        feedback: "You can ask for general help without exposing someone else's private information.",
+        feedback: "Right — a general question can get you useful advice without exposing anyone's private situation.",
       },
-      { text: "Include their name so AI understands better", feedback: "You can ask for general help without exposing someone else's private information." },
+      {
+        text: "Include their name so AI understands better",
+        feedback: "Their name isn't necessary for good advice, and including it exposes information that isn't yours to share.",
+      },
     ],
     correctIndex: 2,
     concept: "privacy",
@@ -215,13 +266,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "verification",
     stem: "AI gives one answer. Your teacher's textbook gives another.",
     options: [
-      { text: "Automatically trust AI because it is newer", feedback: "A disagreement is a reason to investigate, not guess." },
-      { text: "Automatically trust whichever answer is longer", feedback: "A disagreement is a reason to investigate, not guess." },
+      {
+        text: "Automatically trust AI because it is newer",
+        feedback: "Newer isn't the same as more accurate — AI can be out of date or simply wrong.",
+      },
+      {
+        text: "Automatically trust whichever answer is longer",
+        feedback: "Length has nothing to do with which answer is actually correct.",
+      },
       {
         text: "Investigate using reliable sources and ask your teacher if needed",
-        feedback: "A disagreement is a reason to investigate, not guess.",
+        feedback: "Right — a disagreement between sources is exactly when it's worth checking further and asking your teacher.",
       },
-      { text: "Pick the answer you prefer", feedback: "A disagreement is a reason to investigate, not guess." },
+      {
+        text: "Pick the answer you prefer",
+        feedback: "Picking whichever answer you like better isn't how you figure out which one is true.",
+      },
     ],
     correctIndex: 2,
     concept: "conflicting_information",
@@ -255,13 +315,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "The assignment is specifically assessing your ability to find and evaluate reliable sources.",
     context: [{ quote: "Find the best three sources for me and tell me which ones are reliable." }],
     options: [
-      { text: "Strong use because AI saves time", feedback: "Even if the sources exist, AI is performing the exact source-finding and evaluating skill your teacher wants to see from you." },
+      {
+        text: "Strong use because AI saves time",
+        feedback: "Saving time doesn't matter here — the point of the assignment is to practise finding and evaluating sources yourself.",
+      },
       {
         text: "Questionable because AI is doing the research skill being assessed",
-        feedback: "Even if the sources exist, AI is performing the exact source-finding and evaluating skill your teacher wants to see from you.",
+        feedback: "Right — even with real sources, AI just did the exact evaluating skill your teacher wants to see from you.",
       },
-      { text: "Fine if the sources are real", feedback: "Even real sources don't fix the problem — AI still did the evaluating skill being assessed." },
-      { text: "Fine if you read them afterward", feedback: "Reading them afterward doesn't change who performed the assessed skill." },
+      {
+        text: "Fine if the sources are real",
+        feedback: "The sources being real doesn't fix the problem — you still didn't do the evaluating.",
+      },
+      {
+        text: "Fine if you read them afterward",
+        feedback: "Reading the sources afterward doesn't undo the fact that AI did the finding and evaluating for you.",
+      },
     ],
     correctIndex: 1,
     concept: "assessed_skill",
@@ -280,7 +349,10 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
       { text: "Potentially appropriate within the teacher's rules", feedback: "Here AI supports comprehension while the student still performs the assigned research work." },
       { text: "Automatically cheating", feedback: "This stays within a reading-support permission the teacher already gave." },
       { text: "AI should write the research notes too", feedback: "The student explicitly asked AI not to create the research notes." },
-      { text: "Impossible because AI cannot explain text", feedback: "Explaining a passage in simpler language is exactly the kind of support described here." },
+      {
+        text: "Fine, as long as you copy AI's simplified explanation into your research notes",
+        feedback: "The student's own prompt already ruled that out — the point was understanding the paragraph, not letting AI's wording become the research notes.",
+      },
     ],
     correctIndex: 0,
     concept: "context_dependent_support",
@@ -295,13 +367,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "verification",
     stem: "AI gives you important health information that could affect a real decision.",
     options: [
-      { text: "Treat AI as the final authority", feedback: "Important real-world information deserves stronger checking than an ordinary practice question." },
+      {
+        text: "Treat AI as the final authority",
+        feedback: "Treating AI as the final word is risky for something that could actually affect your health.",
+      },
       {
         text: "Check trustworthy health information and speak with an appropriate adult or professional when needed",
-        feedback: "Important real-world information deserves stronger checking than an ordinary practice question.",
+        feedback: "Right — real health decisions deserve a trustworthy source and, when it matters, an adult or professional.",
       },
-      { text: "Trust it if the answer is detailed", feedback: "Detail is not the same as accuracy for something this important." },
-      { text: "Ask AI to guarantee its answer", feedback: "AI cannot guarantee that an answer is correct." },
+      {
+        text: "Trust it if the answer is detailed",
+        feedback: "A detailed answer can still be wrong — detail isn't the same as accuracy.",
+      },
+      {
+        text: "Ask AI to guarantee its answer",
+        feedback: "AI can't actually guarantee its own answer is correct, so asking doesn't add any real certainty.",
+      },
     ],
     correctIndex: 1,
     concept: "stakes_and_verification",
@@ -317,16 +398,28 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     stem: "Teacher says:",
     context: [{ quote: "You may use your usual classroom tools." }, "You are not sure whether that includes generative AI."],
     options: [
-      { text: "Decide that it definitely does", feedback: "You do not need to guess what an unclear instruction means." },
-      { text: "Decide that it definitely does not", feedback: "You do not need to guess what an unclear instruction means." },
-      { text: "Ask the teacher", feedback: "You do not need to guess what an unclear instruction means." },
-      { text: "Use AI and explain afterward", feedback: "You do not need to guess what an unclear instruction means." },
+      {
+        text: "Decide that it definitely does",
+        feedback: "Assuming it's included is a guess dressed up as a decision — the wording doesn't actually say that.",
+      },
+      {
+        text: "Decide that it definitely does not",
+        feedback: "Assuming it's excluded is just as much of a guess as assuming it's included.",
+      },
+      {
+        text: "Ask the teacher",
+        feedback: "Right — when the wording is genuinely unclear, asking settles it faster than guessing either way.",
+      },
+      {
+        text: "Use AI and explain afterward",
+        feedback: "Using it first and explaining later still means you guessed — asking first avoids the guess entirely.",
+      },
     ],
     correctIndex: 2,
     concept: "permission_clarification",
     correction: {
-      prompt: "When permission is unclear:",
-      options: ["Ask", "Guess"],
+      prompt: "Your teacher's instructions don't mention AI at all for a different assignment. What's the safer move?",
+      options: ["Ask before using it", "Assume it's fine since it isn't banned"],
       correctIndex: 0,
     },
   },
@@ -335,13 +428,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "support",
     stem: "Teacher allows spellcheck and grammar feedback but says your writing must remain your own.",
     options: [
-      { text: "“Rewrite this professionally.”", feedback: "AI identifies problems while you make the actual changes — this goes beyond that." },
-      { text: "“Replace my sentences with stronger ones.”", feedback: "AI identifies problems while you make the actual changes — this goes beyond that." },
+      {
+        text: "“Rewrite this professionally.”",
+        feedback: "That asks AI to produce new sentences, which goes past the grammar-feedback permission you were given.",
+      },
+      {
+        text: "“Replace my sentences with stronger ones.”",
+        feedback: "Replacing your sentences means AI is doing the writing, not just checking it.",
+      },
       {
         text: "“Point out grammar errors and explain them without rewriting my sentences.”",
-        feedback: "AI identifies problems while you make the actual changes.",
+        feedback: "Right — this stays inside the exact permission: AI points out errors, and you're the one who fixes them.",
       },
-      { text: "“Change my vocabulary so I sound older.”", feedback: "AI identifies problems while you make the actual changes — this goes beyond that." },
+      {
+        text: "“Change my vocabulary so I sound older.”",
+        feedback: "Changing your vocabulary changes your voice, which is outside a spelling-and-grammar permission.",
+      },
     ],
     correctIndex: 2,
     concept: "feedback_vs_rewriting",
@@ -356,13 +458,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "verification",
     stem: "AI gives an explanation of a historical conflict that makes one side seem completely reasonable and barely mentions the other side.",
     options: [
-      { text: "Assume the first side was correct", feedback: "AI output can leave out viewpoints or reflect bias. Look for missing evidence." },
+      {
+        text: "Assume the first side was correct",
+        feedback: "An answer that only shows one side isn't evidence that side is correct — it may just be missing the other one.",
+      },
       {
         text: "Ask what perspectives and evidence may be missing, then investigate reliable sources",
-        feedback: "AI output can leave out viewpoints or reflect bias. Look for missing evidence.",
+        feedback: "Right — a lopsided answer is exactly when it's worth asking what's missing and checking further.",
       },
-      { text: "Ask AI to make the answer shorter", feedback: "Length does not fix a one-sided answer." },
-      { text: "Submit it because AI is neutral", feedback: "AI is not automatically neutral or unbiased." },
+      {
+        text: "Ask AI to make the answer shorter",
+        feedback: "A shorter answer would still be one-sided — length isn't the problem here.",
+      },
+      {
+        text: "Submit it because AI is neutral",
+        feedback: "AI isn't automatically neutral, and a one-sided answer is a sign it may not be here.",
+      },
     ],
     correctIndex: 1,
     concept: "bias",
@@ -377,13 +488,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "responsibility",
     stem: "You waited until the night before a project is due. You ask AI to create the whole project because there is not enough time left.",
     options: [
-      { text: "A deadline changes who is supposed to do the learning", feedback: "Time pressure is real, but it does not automatically change the purpose or rules of the assignment." },
-      { text: "AI becomes acceptable whenever you are rushed", feedback: "Time pressure is real, but it does not automatically change the purpose or rules of the assignment." },
+      {
+        text: "A deadline changes who is supposed to do the learning",
+        feedback: "Running out of time doesn't change who the assignment expects to do the actual learning — that's still you.",
+      },
+      {
+        text: "AI becomes acceptable whenever you are rushed",
+        feedback: "Feeling rushed doesn't rewrite the rules the assignment was already built on.",
+      },
       {
         text: "Being short on time does not automatically change the assignment expectations",
-        feedback: "Time pressure is real, but it does not automatically change the purpose or rules of the assignment.",
+        feedback: "Right — time pressure is real, but it doesn't change what the assignment was designed to have you learn.",
       },
-      { text: "It is acceptable if the project looks good", feedback: "Looking good does not mean the required learning happened." },
+      {
+        text: "It is acceptable if the project looks good",
+        feedback: "Looking good on the outside doesn't mean the required thinking actually happened.",
+      },
     ],
     correctIndex: 2,
     concept: "responsibility_under_pressure",
@@ -398,13 +518,22 @@ export const finalChallengeBank: readonly FinalQuestion[] = [
     category: "integrated",
     stem: "Teacher allows AI learning support. You wrote your own answer but are unsure whether your reasoning makes sense.",
     options: [
-      { text: "Ask AI to replace the answer", feedback: "This combines the major skills: permission, student thinking, feedback, verification, and responsibility — replacing the answer skips all of it." },
+      {
+        text: "Ask AI to replace the answer",
+        feedback: "Replacing your answer hands over the exact thinking the assignment wanted to see from you.",
+      },
       {
         text: "Ask AI to point out a possible weakness, revise it yourself, and check any factual claims",
-        feedback: "This combines the major skills: permission, student thinking, feedback, verification, and responsibility.",
+        feedback: "Right — this uses AI for feedback and verification while you stay the one revising and deciding.",
       },
-      { text: "Ask AI to make the answer sound perfect and submit it unread", feedback: "Submitting unread work skips the responsibility to check what you submit." },
-      { text: "Ask AI to decide what you believe", feedback: "The decisions and reasoning still need to stay yours." },
+      {
+        text: "Ask AI to make the answer sound perfect and submit it unread",
+        feedback: "Submitting something unread means you never actually checked whether it's accurate or right for the assignment.",
+      },
+      {
+        text: "Ask AI to decide what you believe",
+        feedback: "Your reasoning and conclusions need to stay yours — AI shouldn't be the one deciding what you believe.",
+      },
     ],
     correctIndex: 1,
     concept: "integrated_judgment",

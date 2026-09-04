@@ -53,6 +53,13 @@ describe("courseContent shape", () => {
     expect((counts.responsibility ?? 0) + (counts.integrated ?? 0)).toBeGreaterThanOrEqual(1);
   });
 
+  it("never gives two options in the same final-challenge question identical feedback", () => {
+    for (const q of courseContent.finalBank) {
+      const feedbackTexts = q.options.map((o) => o.feedback);
+      expect(new Set(feedbackTexts).size, `${q.id} has duplicate option feedback`).toBe(feedbackTexts.length);
+    }
+  });
+
   it("selects a real module attempt and a real final challenge without error", () => {
     const moduleSelection = selectModuleQuestions({
       bank: courseContent.modules.module1.quizBank,

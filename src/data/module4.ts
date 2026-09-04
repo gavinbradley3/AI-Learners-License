@@ -11,29 +11,26 @@ export const module4: ModuleContent = {
       id: "M4-1",
       heading: "“But AI can do it.”",
       blocks: [
-        "So can a calculator.",
-        "So can a search engine.",
-        "That does not mean every tool is allowed for every task.",
-        "School assignments are designed to practise different skills.",
+        "So can a calculator. So can a search engine.",
+        "That does not mean every tool is allowed for every task. School assignments are designed to practise different skills.",
         { quote: "The teacher decides what tools are allowed for a particular task." },
       ],
-      continueLabel: "Continue",
-    },
-    {
-      type: "info",
-      id: "M4-2",
-      heading: "Permission can have limits",
-      blocks: [
-        "Teacher might say:",
-        { quote: "AI is allowed for studying, but not during the test." },
-        "or",
-        { quote: "AI can give feedback on your draft, but it cannot rewrite it." },
-        "or",
-        { quote: "Do not use AI for this assignment." },
-        "Do not turn:",
-        { quote: "AI is allowed for this part" },
-        "into:",
-        { quote: "AI is allowed for everything." },
+      sections: [
+        {
+          heading: "Permission can have limits",
+          blocks: [
+            "Teacher might say:",
+            { quote: "AI is allowed for studying, but not during the test." },
+            "or",
+            { quote: "AI can give feedback on your draft, but it cannot rewrite it." },
+            "or",
+            { quote: "Do not use AI for this assignment." },
+            "Do not turn:",
+            { quote: "AI is allowed for this part" },
+            "into:",
+            { quote: "AI is allowed for everything." },
+          ],
+        },
       ],
       continueLabel: "Continue",
     },
@@ -133,27 +130,39 @@ export const module4: ModuleContent = {
       continueLabel: "Continue",
     },
     {
-      type: "info",
+      type: "deck",
       id: "M4-8",
       heading: "Boundary practice",
-      bulletGroups: [
+      items: [
         {
-          heading:
+          id: "M4-8-1",
+          prompt:
             "Teacher says AI is allowed to explain difficult vocabulary. Student asks AI to write the assignment conclusion.",
-          items: ["Outside the boundary. Permission for one use is not permission for every use."],
+          choiceLabels: ["Outside the boundary", "Fine — the teacher already said AI is allowed"],
+          correctIndex: 0,
+          feedback: "Permission for one specific use (vocabulary) isn't permission for every use — writing the conclusion goes beyond it.",
         },
         {
-          heading:
+          id: "M4-8-2",
+          prompt:
             "Student removes names and asks: “What are some respectful ways to support a friend who is having a difficult week?”",
-          items: ["Safer use. A general question can avoid exposing someone else's private details."],
+          choiceLabels: ["Safer use", "Still risky — any AI question about a friend is unsafe"],
+          correctIndex: 0,
+          feedback: "A general question with no identifying details can avoid exposing someone else's private situation.",
         },
         {
-          heading: "AI provides a false fact that the student submits without reading.",
-          items: ["Student is still responsible. You are responsible for what you submit under your name."],
+          id: "M4-8-3",
+          prompt: "AI provides a false fact that the student submits without reading.",
+          choiceLabels: ["Student is still responsible", "AI is responsible, since it gave the wrong fact"],
+          correctIndex: 0,
+          feedback: "You are responsible for what you submit under your name, whether or not you read it first.",
         },
         {
-          heading: "Teacher instructions do not mention AI. Student wants AI to generate ideas.",
-          items: ["Ask first. When permission is unclear, do not guess."],
+          id: "M4-8-4",
+          prompt: "Teacher instructions do not mention AI. Student wants AI to generate ideas.",
+          choiceLabels: ["Ask first", "Go ahead — it isn't banned"],
+          correctIndex: 0,
+          feedback: "Not being banned isn't the same as being allowed. When permission is unclear, ask instead of guessing.",
         },
       ],
       continueLabel: "Continue",
