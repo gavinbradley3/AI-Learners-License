@@ -15,7 +15,7 @@ export function PilotSummaryScreen() {
   );
 
   return (
-    <Card headingLevel="h1" heading={pilotSummary.heading}>
+    <Card headingLevel="h1" variant="success" eyebrow="Course complete" heading={pilotSummary.heading}>
       <dl className="stack">
         {state.preCheck.status === "completed" && (
           <div>

@@ -34,7 +34,7 @@ export function CourseMapScreen() {
         total={MODULE_IDS.length}
       />
       <div className={styles.grid}>
-        {MODULE_IDS.map((id) => {
+        {MODULE_IDS.map((id, index) => {
           const moduleState = state.modules[id];
           const moduleContent = content.modules[id];
           const disabled = moduleState.status === "locked";
@@ -43,9 +43,13 @@ export function CourseMapScreen() {
               key={id}
               type="button"
               className={[styles.moduleCard, moduleState.status === "cleared" ? styles.cleared : ""].join(" ")}
+              style={{ ["--module-accent" as string]: `var(--module-${index + 1})` }}
               disabled={disabled}
               onClick={() => actions.goTo(id)}
             >
+              <span className={styles.stepNumber} aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <span className={styles.moduleInfo}>
                 <span className={styles.moduleTitle}>{moduleContent.title}</span>
                 <span className={styles.moduleMeta}>
@@ -59,9 +63,13 @@ export function CourseMapScreen() {
         <button
           type="button"
           className={[styles.moduleCard, state.final.status === "cleared" ? styles.cleared : ""].join(" ")}
+          style={{ ["--module-accent" as string]: "var(--phase-assessment)" }}
           disabled={state.final.status === "locked"}
           onClick={() => actions.goTo("final")}
         >
+          <span className={styles.stepNumber} aria-hidden="true">
+            05
+          </span>
           <span className={styles.moduleInfo}>
             <span className={styles.moduleTitle}>AI Learner Licence Challenge</span>
             <span className={styles.moduleMeta}>combine all concepts · 6–8 min</span>

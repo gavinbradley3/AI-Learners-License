@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
   margin: var(--space-5) 0 0;
   padding: 0;
   list-style: none;
@@ -16,7 +16,6 @@
   min-height: var(--touch-target-min);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-3);
   text-align: left;
   padding: var(--space-3) var(--space-4);
@@ -25,34 +24,43 @@
   background: var(--color-surface);
   color: var(--color-text-primary);
   font-size: var(--font-size-base);
+  line-height: 1.4;
   cursor: pointer;
   transition:
     border-color var(--motion-fast) var(--motion-ease),
-    background-color var(--motion-fast) var(--motion-ease);
+    background-color var(--motion-fast) var(--motion-ease),
+    box-shadow var(--motion-fast) var(--motion-ease);
 }
 
 .choice:hover:not(:disabled) {
   border-color: var(--color-slate-400);
+  box-shadow: 0 1px 2px rgba(16, 27, 45, 0.06);
 }
 
 .choice:disabled {
   cursor: default;
 }
 
-.choice:disabled:not(.selected) {
-  opacity: 0.6;
+.choice:disabled:not(.selected):not(.correct):not(.incorrect) {
+  opacity: 0.55;
 }
 
+/* The letter is a keycap, not a bullet: it reads as the label of a control on a
+   permit terminal, and it is derived from display position only — never scoring. */
 .letter {
   flex-shrink: 0;
-  min-width: 1.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-slate-200);
+  background: var(--color-surface-sunken);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
   font-weight: 700;
   color: var(--color-slate-500);
-}
-
-.correct .letter,
-.incorrect .letter {
-  color: inherit;
 }
 
 .label {
@@ -64,9 +72,21 @@
   background: var(--color-slate-100);
 }
 
+.selected .letter {
+  border-color: var(--color-navy-800);
+  background: var(--color-navy-800);
+  color: var(--color-text-on-dark);
+}
+
 .correct {
   border-color: var(--color-correct);
   background: var(--color-correct-tint);
+}
+
+.correct .letter {
+  border-color: var(--color-correct);
+  background: var(--color-correct);
+  color: #ffffff;
 }
 
 .incorrect {
@@ -74,13 +94,22 @@
   background: var(--color-incorrect-tint);
 }
 
+.incorrect .letter {
+  border-color: var(--color-incorrect);
+  background: var(--color-incorrect);
+  color: #ffffff;
+}
+
 .statusTag {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  font-size: var(--font-size-sm);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
   font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
 }
 
 .correct .statusTag {
@@ -89,4 +118,14 @@
 
 .incorrect .statusTag {
   color: var(--color-incorrect);
+}
+
+@media (max-width: 480px) {
+  .choice {
+    flex-wrap: wrap;
+  }
+
+  .statusTag {
+    margin-left: calc(1.65rem + var(--space-3));
+  }
 }

@@ -17,7 +17,7 @@ export function PreCheckScreen() {
 
   if (isComplete) {
     return (
-      <Card headingLevel="h1" heading="Pre-check complete">
+      <Card headingLevel="h1" variant="success" eyebrow="Pre-check" heading="Pre-check complete">
         <p>{preCheckComplete.message}</p>
         <div className="actions-row">
           <Button onClick={() => actions.goTo("courseMap")}>{preCheckComplete.continueLabel}</Button>
@@ -28,7 +28,7 @@ export function PreCheckScreen() {
 
   if (!introDismissed && answeredCount === 0) {
     return (
-      <Card headingLevel="h1" heading={preCheckIntro.heading}>
+      <Card headingLevel="h1" variant="teaching" eyebrow="Before you start" heading={preCheckIntro.heading}>
         <div className="stack">
           {preCheckIntro.body.map((line, i) => (
             <p key={i}>{line}</p>
@@ -44,7 +44,7 @@ export function PreCheckScreen() {
   const question = content.preCheck[answeredCount];
 
   return (
-    <Card headingLevel="h1" heading="What Would You Do?">
+    <Card headingLevel="h1" variant="practice" eyebrow="Pre-check · not marked" heading="What Would You Do?">
       <ProgressIndicator label={`Question ${answeredCount + 1} of ${content.preCheck.length}`} current={answeredCount + 1} total={content.preCheck.length} />
       <div className="spaced-top">
         <QuestionCard

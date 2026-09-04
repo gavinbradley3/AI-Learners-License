@@ -16,7 +16,7 @@ export function ExitSurveyScreen() {
 
   if (survey.completed) {
     return (
-      <Card headingLevel="h1" heading="Thanks">
+      <Card headingLevel="h1" variant="success" eyebrow="Feedback" heading="Thanks">
         <p>{exitSurvey.thanksMessage}</p>
         <div className="actions-row">
           <Button onClick={() => actions.goTo("pilotSummary")}>Continue</Button>
@@ -28,7 +28,7 @@ export function ExitSurveyScreen() {
   const canFinish = survey.q1 && survey.q2 && survey.q3 && survey.q4;
 
   return (
-    <Card headingLevel="h1" heading={exitSurvey.heading}>
+    <Card headingLevel="h1" variant="teaching" eyebrow="Feedback" heading={exitSurvey.heading}>
       <div className="stack">
         {exitSurvey.intro.map((line, i) => (
           <p key={i}>{line}</p>

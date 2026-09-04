@@ -1,8 +1,14 @@
 :root {
-  /* Core surfaces */
-  --color-bg: #f4f6f9;
+  /* ---------------------------------------------------------------
+     Surfaces. A light "document" ground under dark issuing chrome:
+     cards read as papers on a technical surface, not as app panels.
+     --------------------------------------------------------------- */
+  --color-bg: #eef1f6;
+  --color-bg-grid: rgba(16, 27, 45, 0.045);
   --color-surface: #ffffff;
-  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #f5f7fa;
+  --color-surface-inverse: #0b1420;
+
   --color-navy-900: #0b1420;
   --color-navy-800: #101b2d;
   --color-navy-700: #16233a;
@@ -12,38 +18,73 @@
   --color-slate-200: #d7dee7;
   --color-slate-100: #eaeef3;
   --color-line: #dde3ec;
+  --color-line-strong: #c3ccd9;
 
   /* Text */
   --color-text-primary: #101b2d;
   --color-text-secondary: #4b5972;
+  --color-text-muted: #6b7a92;
   --color-text-on-dark: #f4f6f9;
-  --color-text-on-dark-muted: #b7c2d3;
+  --color-text-on-dark-muted: #97a6bd;
 
-  /* Accent (restrained, used sparingly for success/CLEARED state) */
+  /* Accent (restrained; carries success and the licence seal) */
   --color-accent: #1f8a5f;
   --color-accent-strong: #146b48;
   --color-accent-tint: #e4f3ec;
 
-  /* Status (never used alone; always paired with icon/text) */
+  /* Status (never used alone; always paired with an icon and words) */
   --color-correct: #1f8a5f;
   --color-correct-tint: #e4f3ec;
   --color-incorrect: #9a3b3b;
   --color-incorrect-tint: #f7e9e9;
 
-  /* Focus */
   --color-focus-ring: #2f6fed;
 
+  /* ---------------------------------------------------------------
+     Phase colours. Teaching, practice, assessment, correction and
+     success are the five states of the course; each card names its
+     own with a rail colour and a matching eyebrow, so a student can
+     tell "I am being taught" from "I am being marked" at a glance.
+     --------------------------------------------------------------- */
+  --phase-teaching: #2f5fb0;
+  --phase-teaching-tint: #eaf0fb;
+  --phase-practice: #0f766e;
+  --phase-practice-tint: #e6f4f2;
+  --phase-assessment: #1e2a44;
+  --phase-assessment-tint: #e8ebf1;
+  --phase-correction: #9a6407;
+  --phase-correction-tint: #fbf1de;
+  --phase-success: #1f8a5f;
+  --phase-success-tint: #e4f3ec;
+
+  /* Per-module accents, used on the numeral and the map rail. */
+  --module-1: #2f5fb0;
+  --module-2: #0f766e;
+  --module-3: #6d3f9e;
+  --module-4: #a8531c;
+
   /* Typography */
+  /* System stack only — no webfont request, so nothing leaves the student's device. */
   --font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
   --font-size-md: 1.125rem;
   --font-size-lg: 1.375rem;
   --font-size-xl: 1.75rem;
   --font-size-xxl: 2.25rem;
+  --font-size-display: 3rem;
+
   --line-height-body: 1.55;
-  --line-height-tight: 1.25;
+  --line-height-tight: 1.2;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.14em;
 
   /* Spacing scale */
   --space-1: 0.25rem;
@@ -56,10 +97,18 @@
   --space-8: 3rem;
 
   /* Shape */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --shadow-card: 0 1px 2px rgba(16, 27, 45, 0.06), 0 8px 24px rgba(16, 27, 45, 0.06);
+  --radius-sm: 5px;
+  --radius-md: 9px;
+  --radius-lg: 14px;
+  --rail-width: 3px;
+
+  --shadow-card:
+    0 1px 1px rgba(16, 27, 45, 0.04),
+    0 2px 4px rgba(16, 27, 45, 0.04),
+    0 12px 28px rgba(16, 27, 45, 0.07);
+  --shadow-raised:
+    0 1px 2px rgba(16, 27, 45, 0.06),
+    0 18px 44px rgba(16, 27, 45, 0.12);
 
   /* Layout */
   --content-max-width: 42rem;
@@ -68,6 +117,7 @@
   /* Motion */
   --motion-fast: 120ms;
   --motion-base: 200ms;
+  --motion-slow: 420ms;
   --motion-ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -75,5 +125,6 @@
   :root {
     --motion-fast: 0ms;
     --motion-base: 0ms;
+    --motion-slow: 0ms;
   }
 }

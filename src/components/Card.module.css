@@ -1,30 +1,117 @@
 .card {
+  position: relative;
   background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: var(--space-6);
+  overflow: hidden;
+  animation: riseIn var(--motion-base) var(--motion-ease) both;
+}
+
+/* The phase rail: one bar across the top of the card, in the colour of the
+   state the student is in. Colour is never the only signal — the eyebrow above
+   the heading says the same thing in words. */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--rail-width);
+  background: var(--rail-color, var(--color-line-strong));
+}
+
+.teaching {
+  --rail-color: var(--phase-teaching);
+  --eyebrow-color: var(--phase-teaching);
+}
+.practice {
+  --rail-color: var(--phase-practice);
+  --eyebrow-color: var(--phase-practice);
+}
+.assessment {
+  --rail-color: var(--phase-assessment);
+  --eyebrow-color: var(--phase-assessment);
+}
+.correction {
+  --rail-color: var(--phase-correction);
+  --eyebrow-color: var(--phase-correction);
+}
+.success {
+  --rail-color: var(--phase-success);
+  --eyebrow-color: var(--phase-success);
+}
+
+/* Assessment cards sit on a faint ruled ground so a marked question feels
+   like a different kind of page from a teaching one. */
+.assessment {
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    repeating-linear-gradient(
+        90deg,
+        var(--color-bg-grid) 0 1px,
+        transparent 1px 28px
+      )
+      padding-box;
+}
+
+.correction {
+  background: linear-gradient(180deg, var(--phase-correction-tint) 0, var(--color-surface) 5.5rem);
+}
+
+.success {
+  background: linear-gradient(180deg, var(--phase-success-tint) 0, var(--color-surface) 6rem);
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.headText {
+  flex: 1;
+  min-width: 0;
 }
 
 .eyebrow {
   margin: 0 0 var(--space-2);
-  font-size: var(--font-size-sm);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--color-slate-500);
+  color: var(--eyebrow-color, var(--color-slate-500));
 }
 
 .heading {
   margin: 0 0 var(--space-4);
   font-size: var(--font-size-lg);
   line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
   color: var(--color-navy-900);
+}
+
+/* The module number as a graphic element rather than a word: large, tabular,
+   sitting alongside the heading the way a form number sits on a permit. */
+.marker {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  color: var(--rail-color, var(--color-slate-400));
+  opacity: 0.9;
+  padding-top: 2px;
 }
 
 @media (max-width: 480px) {
   .card {
     padding: var(--space-5);
     border-radius: var(--radius-md);
+  }
+
+  .marker {
+    font-size: var(--font-size-lg);
   }
 }

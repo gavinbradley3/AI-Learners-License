@@ -5,21 +5,26 @@
 }
 
 .label {
-  font-size: var(--font-size-sm);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
   font-weight: 600;
-  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--progress-label-color, var(--color-text-secondary));
 }
 
+/* Discrete ticks rather than a bar: a permit shows stamped steps, not a percentage. */
 .segments {
   display: flex;
-  gap: var(--space-1);
+  gap: 3px;
 }
 
 .segment {
   flex: 1;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--color-slate-200);
+  height: 5px;
+  border-radius: 1px;
+  background: var(--progress-track-color, var(--color-slate-200));
+  transition: background-color var(--motion-base) var(--motion-ease);
 }
 
 .segmentFilled {

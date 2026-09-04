@@ -34,7 +34,7 @@ function InfoSectionBody({ section }: { section: InfoSection }) {
 export function ModuleScreenView({ screen, onDone }: ModuleScreenViewProps) {
   if (screen.type === "info") {
     return (
-      <Card headingLevel="h1" heading={screen.heading} eyebrow={screen.eyebrow}>
+      <Card headingLevel="h1" variant="teaching" heading={screen.heading} eyebrow={screen.eyebrow ?? "Learn"}>
         <InfoSectionBody section={screen} />
         {screen.sections?.map((section, i) => (
           <div className={styles.section} key={i}>
@@ -51,7 +51,7 @@ export function ModuleScreenView({ screen, onDone }: ModuleScreenViewProps) {
 
   if (screen.type === "choice") {
     return (
-      <Card headingLevel="h1" heading={screen.heading} eyebrow={screen.eyebrow}>
+      <Card headingLevel="h1" variant="practice" heading={screen.heading} eyebrow={screen.eyebrow ?? "Practice"}>
         <QuestionCard
           context={screen.context}
           prompt={screen.prompt}
@@ -70,7 +70,7 @@ export function ModuleScreenView({ screen, onDone }: ModuleScreenViewProps) {
   }
 
   return (
-    <Card headingLevel="h1" heading={screen.heading}>
+    <Card headingLevel="h1" variant="teaching" eyebrow="Takeaway" heading={screen.heading}>
       <blockquote className={styles.note}>{screen.quote}</blockquote>
       <div className="actions-row">
         <Button onClick={onDone}>{screen.continueLabel}</Button>
@@ -91,7 +91,7 @@ function DeckScreenView({
   const isLast = itemIndex === screen.items.length - 1;
 
   return (
-    <Card headingLevel="h1" heading={screen.heading}>
+    <Card headingLevel="h1" variant="practice" eyebrow="Practice" heading={screen.heading}>
       {screen.intro && <p>{screen.intro}</p>}
       <p className={styles.note}>
         {itemIndex + 1} of {screen.items.length}

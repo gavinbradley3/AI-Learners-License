@@ -47,11 +47,11 @@
 
 .ghost {
   background: transparent;
-  color: var(--color-slate-600);
+  color: var(--ghost-color, var(--color-slate-600));
   padding-inline: var(--space-3);
 }
 
 .ghost:hover:not(:disabled) {
-  color: var(--color-navy-800);
+  color: var(--ghost-color-hover, var(--color-navy-800));
   text-decoration: underline;
 }

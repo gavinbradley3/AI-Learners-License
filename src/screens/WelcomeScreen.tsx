@@ -7,7 +7,7 @@ export function WelcomeScreen() {
   const actions = useCourseActions();
 
   return (
-    <Card headingLevel="h1" heading={welcome.heading}>
+    <Card headingLevel="h1" variant="teaching" eyebrow="Start here" heading={welcome.heading}>
       <p>{welcome.subtitle}</p>
       <p>{welcome.timeNote}</p>
       <p>{welcome.preCheckPrompt}</p>

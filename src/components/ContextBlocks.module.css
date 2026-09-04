@@ -1,14 +1,20 @@
 .wrap p {
-  margin: 0 0 var(--space-2);
+  margin: 0 0 var(--space-3);
   color: var(--color-text-secondary);
 }
 
+/* Quoted lines are what someone actually typed to an AI tool, so they get a
+   terminal-ish treatment rather than a literary pull-quote. */
 .wrap blockquote {
-  margin: 0 0 var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  border-left: 3px solid var(--color-slate-200);
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-left: var(--rail-width) solid var(--color-slate-400);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--color-surface-sunken);
   color: var(--color-text-primary);
-  font-style: italic;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
 }
 
 .wrap > :last-child {

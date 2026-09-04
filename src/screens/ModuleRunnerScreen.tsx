@@ -1,4 +1,4 @@
-import { PATTERN_LABELS, type ModuleId } from "../types";
+import { MODULE_IDS, PATTERN_LABELS, type ModuleId } from "../types";
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
 import { ProgressIndicator } from "../components/ProgressIndicator";
@@ -19,6 +19,7 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
   const actions = useCourseActions();
   const moduleState = state.modules[moduleId];
   const moduleContent = content.modules[moduleId];
+  const moduleMarker = String(MODULE_IDS.indexOf(moduleId) + 1).padStart(2, "0");
 
   if (moduleState.phase === "content") {
     const index = Math.min(moduleState.contentScreenIndex, moduleContent.screens.length - 1);
@@ -45,7 +46,13 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
     const questionId = attempt.questionIds[questionIndex];
     const question = moduleContent.quizBank.find((q) => q.id === questionId)!;
     return (
-      <Card headingLevel="h1" heading={moduleContent.title} eyebrow="Module challenge">
+      <Card
+        headingLevel="h1"
+        variant="assessment"
+        heading={moduleContent.title}
+        eyebrow="Module challenge"
+        marker={moduleMarker}
+      >
         <ProgressIndicator
           label={`Question ${questionIndex + 1} of ${attempt.questionIds.length}`}
           current={questionIndex + 1}
@@ -72,7 +79,13 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
     const question = moduleContent.quizBank.find((q) => q.id === questionId)!;
     const wrongExplanation = question.options[question.correctIndex].feedback;
     return (
-      <Card headingLevel="h1" heading={moduleContent.title} eyebrow="Quick correction">
+      <Card
+        headingLevel="h1"
+        variant="correction"
+        heading={moduleContent.title}
+        eyebrow="Quick correction"
+        marker={moduleMarker}
+      >
         <p>Let's take another look at one idea before moving on.</p>
         <div className="spaced-top">
           <CorrectionCard
@@ -92,7 +105,7 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
   if (moduleState.phase === "review") {
     const review = moduleContent.review;
     return (
-      <Card headingLevel="h1" heading={review.heading}>
+      <Card headingLevel="h1" variant="teaching" eyebrow="60-second review" heading={review.heading} marker={moduleMarker}>
         {review.bulletGroups?.map((group, i) => (
           <div key={i} className={`${moduleScreenStyles.bulletGroup} spaced-top`}>
             {group.heading && <p className={moduleScreenStyles.bulletHeading}>{group.heading}</p>}
@@ -114,7 +127,13 @@ export function ModuleRunnerScreen({ moduleId }: ModuleRunnerScreenProps) {
 
   // cleared
   return (
-    <Card headingLevel="h1" heading={`${moduleContent.title} — Cleared`} eyebrow="Module complete">
+    <Card
+      headingLevel="h1"
+      variant="success"
+      heading={`${moduleContent.title} — Cleared`}
+      eyebrow="Module complete"
+      marker={moduleMarker}
+    >
       <p>Nice work. You've cleared this module.</p>
       <div className="actions-row">
         <Button onClick={() => actions.goTo("courseMap")}>Back to Course Map</Button>

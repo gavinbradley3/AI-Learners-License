@@ -16,13 +16,20 @@ export function AppShell({ children, progress, onReset }: AppShellProps) {
         Skip to main content
       </a>
       <header className={styles.header}>
-        <p className={styles.brand}>AI Learner Licence</p>
+        <div className={styles.brandBlock}>
+          <p className={styles.brand}>AI Learner Licence</p>
+          <span className={styles.brandMark} aria-hidden="true">
+            Classroom permit
+          </span>
+        </div>
         {progress && (
           <div className={styles.headerProgress}>
             <ProgressIndicator {...progress} />
           </div>
         )}
-        <ResetProgressControl onReset={onReset} />
+        <div className={styles.headerControls}>
+          <ResetProgressControl onReset={onReset} />
+        </div>
       </header>
       <main id="main-content" className={styles.main}>
         <div className={styles.content}>{children}</div>

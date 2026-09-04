@@ -26,7 +26,7 @@ export function FinalChallengeScreen() {
 
   if (finalState.phase === "content") {
     return (
-      <Card headingLevel="h1" heading={finalIntro.heading}>
+      <Card headingLevel="h1" variant="teaching" eyebrow="Before you start" heading={finalIntro.heading} marker="05">
         <div className="stack">
           {finalIntro.body.map((line, i) => (
             <p key={i}>{line}</p>
@@ -49,7 +49,7 @@ export function FinalChallengeScreen() {
     const questionId = attempt.questionIds[questionIndex];
     const question = content.finalBank.find((q) => q.id === questionId)!;
     return (
-      <Card headingLevel="h1" heading="Final Challenge" eyebrow="Licence challenge">
+      <Card headingLevel="h1" variant="assessment" heading="Final Challenge" eyebrow="Licence challenge" marker="05">
         <ProgressIndicator
           label={`Situation ${questionIndex + 1} of ${attempt.questionIds.length}`}
           current={questionIndex + 1}
@@ -76,7 +76,7 @@ export function FinalChallengeScreen() {
     const question = content.finalBank.find((q) => q.id === questionId)!;
     const wrongExplanation = question.options[question.correctIndex].feedback;
     return (
-      <Card headingLevel="h1" heading="Final Challenge" eyebrow="Quick correction">
+      <Card headingLevel="h1" variant="correction" heading="Final Challenge" eyebrow="Quick correction" marker="05">
         <p>Let's take another look at one idea before moving on.</p>
         <div className="spaced-top">
           <CorrectionCard
@@ -96,7 +96,7 @@ export function FinalChallengeScreen() {
   if (finalState.phase === "review") {
     const topCategories = topMissedCategories(finalState.lastMissedConcepts, content.finalBank);
     return (
-      <Card headingLevel="h1" heading="Almost there">
+      <Card headingLevel="h1" variant="teaching" eyebrow="Not cleared yet" heading="Almost there" marker="05">
         <p>{finalRetry.message}</p>
         {topCategories.length > 0 && <p>Areas to revisit: {topCategories.join(", ")}.</p>}
         <div className="actions-row">
@@ -108,7 +108,7 @@ export function FinalChallengeScreen() {
 
   // cleared
   return (
-    <Card headingLevel="h1" heading="Final Challenge — Cleared">
+    <Card headingLevel="h1" variant="success" eyebrow="Challenge complete" heading="Final Challenge — Cleared" marker="05">
       <p>You've combined everything from the course. Your licence is ready.</p>
       <div className="actions-row">
         <Button onClick={() => actions.goTo("licence")}>Continue</Button>
