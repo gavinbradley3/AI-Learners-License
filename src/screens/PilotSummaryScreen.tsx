@@ -14,6 +14,15 @@ export function PilotSummaryScreen() {
     0,
   );
 
+  // The exact score is known now that attempts record it; older progress saved before that
+  // field existed still clears, so fall back to what the pass threshold guarantees.
+  const finalScoreText =
+    state.final.status !== "cleared"
+      ? "Not yet earned"
+      : state.final.lastScore !== undefined && state.final.lastTotal !== undefined
+        ? `${state.final.lastScore} of ${state.final.lastTotal}`
+        : "10 or more of 12";
+
   return (
     <Card headingLevel="h1" variant="success" eyebrow="Course complete" heading={pilotSummary.heading}>
       <dl className="stack">
@@ -25,7 +34,7 @@ export function PilotSummaryScreen() {
         )}
         <div>
           <dt style={{ fontWeight: 600 }}>{pilotSummary.finalScoreLabel}</dt>
-          <dd style={{ margin: 0 }}>{state.final.status === "cleared" ? "10 or more of 12" : "Not yet earned"}</dd>
+          <dd style={{ margin: 0 }}>{finalScoreText}</dd>
         </div>
         <div>
           <dt style={{ fontWeight: 600 }}>{pilotSummary.retriesLabel}</dt>
