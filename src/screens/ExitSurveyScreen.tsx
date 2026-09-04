@@ -1,0 +1,114 @@
+import { Card } from "../components/Card";
+import { Button } from "../components/Button";
+import { exitSurvey } from "../data/copy";
+import { useCourse } from "../state/CourseContext";
+import { useCourseActions } from "../state/useCourseActions";
+import type { LikertAnswer, UsefulnessAnswer } from "../types";
+import styles from "./ExitSurveyScreen.module.css";
+
+const LIKERT_VALUES: LikertAnswer[] = ["stronglyAgree", "agree", "notSure", "disagree"];
+const USEFULNESS_VALUES: UsefulnessAnswer[] = ["veryUseful", "somewhatUseful", "notVeryUseful", "notUseful"];
+
+export function ExitSurveyScreen() {
+  const { state } = useCourse();
+  const actions = useCourseActions();
+  const survey = state.exitSurvey;
+
+  if (survey.completed) {
+    return (
+      <Card headingLevel="h1" heading="Thanks">
+        <p>{exitSurvey.thanksMessage}</p>
+        <div className="actions-row">
+          <Button onClick={() => actions.goTo("pilotSummary")}>Continue</Button>
+        </div>
+      </Card>
+    );
+  }
+
+  const canFinish = survey.q1 && survey.q2 && survey.q3 && survey.q4;
+
+  return (
+    <Card headingLevel="h1" heading={exitSurvey.heading}>
+      <div className="stack">
+        {exitSurvey.intro.map((line, i) => (
+          <p key={i}>{line}</p>
+        ))}
+      </div>
+
+      <LikertQuestion
+        label={exitSurvey.questions.q1}
+        value={survey.q1}
+        onChange={(v) => actions.answerSurvey({ q1: v })}
+      />
+      <LikertQuestion
+        label={exitSurvey.questions.q2}
+        value={survey.q2}
+        onChange={(v) => actions.answerSurvey({ q2: v })}
+      />
+      <LikertQuestion
+        label={exitSurvey.questions.q3}
+        value={survey.q3}
+        onChange={(v) => actions.answerSurvey({ q3: v })}
+      />
+
+      <fieldset className={styles.question}>
+        <legend>{exitSurvey.questions.q4}</legend>
+        <div className={styles.options}>
+          {USEFULNESS_VALUES.map((value, i) => (
+            <label className={styles.option} key={value}>
+              <input
+                type="radio"
+                name="q4"
+                checked={survey.q4 === value}
+                onChange={() => actions.answerSurvey({ q4: value })}
+              />
+              {exitSurvey.usefulnessOptions[i]}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset className={styles.question}>
+        <legend>{exitSurvey.questions.q5}</legend>
+        <textarea
+          id="q5"
+          className={styles.textarea}
+          maxLength={exitSurvey.q5MaxLength}
+          placeholder={exitSurvey.q5Placeholder}
+          value={survey.q5}
+          onChange={(e) => actions.answerSurvey({ q5: e.target.value })}
+        />
+      </fieldset>
+
+      <div className="actions-row">
+        <Button disabled={!canFinish} onClick={() => actions.completeSurvey()}>
+          {exitSurvey.finishLabel}
+        </Button>
+      </div>
+    </Card>
+  );
+}
+
+function LikertQuestion({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: LikertAnswer | null;
+  onChange: (value: LikertAnswer) => void;
+}) {
+  return (
+    <fieldset className={styles.question}>
+      <legend>{label}</legend>
+      <div className={styles.options}>
+        {LIKERT_VALUES.map((v, i) => (
+          <label className={styles.option} key={v}>
+            <input type="radio" checked={value === v} onChange={() => onChange(v)} />
+            {exitSurvey.likertOptions[i]}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  );
+}

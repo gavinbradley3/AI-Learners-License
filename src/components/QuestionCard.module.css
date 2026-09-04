@@ -1,0 +1,22 @@
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-slate-500);
+}
+
+.prompt {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-navy-900);
+  line-height: var(--line-height-tight);
+}
+
+.continueRow {
+  margin-top: var(--space-5);
+  display: flex;
+  justify-content: flex-end;
+}

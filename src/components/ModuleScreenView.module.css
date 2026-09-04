@@ -1,0 +1,30 @@
+.bulletGroup {
+  margin: 0 0 var(--space-4);
+}
+
+.bulletGroup:last-child {
+  margin-bottom: 0;
+}
+
+.bulletHeading {
+  margin: 0 0 var(--space-2);
+  font-weight: 600;
+  color: var(--color-navy-900);
+}
+
+.bulletGroup ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--color-text-secondary);
+}
+
+.note {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-slate-100);
+  color: var(--color-text-primary);
+}
