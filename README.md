@@ -4,6 +4,8 @@ A short Grade 7–8 classroom pilot that teaches students to make smart decision
 
 See `BUILD_SPEC.md` for the full instructional specification and `CLAUDE.md` for project rules and non-negotiables.
 
+**Teaching it?** `TEACHER_NOTES.md` is the one-page run sheet: the link, what to check before the lesson, how shared Chromebooks behave, and what to say to students before they start.
+
 ## Commands
 
 ```bash
