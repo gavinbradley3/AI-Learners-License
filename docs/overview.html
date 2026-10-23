@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Learner Licence — Overview</title>
+    <!--
+      Source for docs/ai-learner-licence-overview.pdf.
+      To regenerate the PDF: open this file in a browser and print to PDF at Letter size
+      with background graphics on. The print CSS below handles margins and page breaks.
+      Self-contained: no webfonts, no scripts, no external requests.
+    -->
+    <style>
+      :root {
+        --navy: #0b1420;
+        --navy-soft: #16233a;
+        --green: #1f8a5f;
+        --green-deep: #0f6b47;
+        --ink: #14202f;
+        --ink-soft: #46556b;
+        --rule: #ccd4df;
+        --rule-soft: #e4e9f0;
+        --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { -webkit-text-size-adjust: 100%; }
+
+      body {
+        margin: 0;
+        background: #f1f3f7;
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 9.6pt;
+        line-height: 1.36;
+      }
+
+      .sheet {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 0 auto;
+        padding: 0.42in 0.52in 0.36in;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ---------- header ---------- */
+      .masthead {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 11px 15px;
+        background: linear-gradient(100deg, var(--navy) 0%, var(--navy-soft) 100%);
+        color: #ffffff;
+        border-radius: 7px;
+      }
+
+      .mark { flex-shrink: 0; width: 38px; height: 38px; }
+
+      .masthead h1 {
+        margin: 0;
+        font-size: 17pt;
+        font-weight: 800;
+        letter-spacing: -0.015em;
+        line-height: 1.05;
+      }
+
+      .masthead .sub {
+        margin: 3px 0 0;
+        font-family: var(--mono);
+        font-size: 6.9pt;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #9fb0c6;
+      }
+
+      .masthead .url {
+        margin-left: auto;
+        text-align: right;
+        font-family: var(--mono);
+        font-size: 7.6pt;
+        color: #7fe3b6;
+        white-space: nowrap;
+      }
+
+      .masthead .url span {
+        display: block;
+        font-size: 6.6pt;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #9fb0c6;
+        margin-bottom: 2px;
+      }
+
+      /* ---------- structure ---------- */
+      .lede {
+        margin: 11px 0 0;
+        font-size: 10.6pt;
+        line-height: 1.32;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--navy);
+      }
+
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 26px;
+        margin-top: 10px;
+      }
+
+      h2 {
+        margin: 0 0 5px;
+        font-family: var(--mono);
+        font-size: 7pt;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        padding-bottom: 3px;
+        border-bottom: 1.5px solid var(--green);
+      }
+
+      section { margin-bottom: 9px; break-inside: avoid; }
+
+      p { margin: 0 0 5px; }
+      p:last-child { margin-bottom: 0; }
+
+      strong { color: var(--navy); }
+
+      /* ---------- five checks ---------- */
+      .checks {
+        margin: 0;
+        padding: 8px 12px;
+        background: #f4f7fa;
+        border: 1px solid var(--rule);
+        border-left: 3px solid var(--green);
+        border-radius: 4px;
+      }
+
+      .checks ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+      }
+
+      .checks li { text-align: center; }
+
+      .checks .q {
+        display: block;
+        font-family: var(--mono);
+        font-size: 8.3pt;
+        font-weight: 700;
+        color: var(--navy);
+        padding-bottom: 3px;
+        margin-bottom: 3px;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .checks .d {
+        display: block;
+        font-size: 7.4pt;
+        line-height: 1.28;
+        color: var(--ink-soft);
+      }
+
+      .checks .after {
+        margin: 6px 0 0;
+        font-size: 7.9pt;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- module table ---------- */
+      table { width: 100%; border-collapse: collapse; }
+
+      td { padding: 3px 0; vertical-align: top; border-bottom: 1px solid var(--rule-soft); }
+      tr:last-child td { border-bottom: none; }
+
+      td.n {
+        width: 24px;
+        font-family: var(--mono);
+        font-size: 9.5pt;
+        font-weight: 700;
+        color: var(--green);
+        line-height: 1.25;
+      }
+
+      td.t { font-weight: 700; color: var(--navy); white-space: nowrap; padding-right: 10px; }
+
+      td.g { color: var(--ink-soft); font-size: 8.8pt; }
+
+      /* ---------- strands ---------- */
+      .strands { margin: 0; padding: 0; list-style: none; }
+
+      .strands li {
+        padding: 0 0 4px 0;
+        margin-bottom: 4px;
+        border-bottom: 1px solid var(--rule-soft);
+      }
+
+      .strands li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+      .strands b { display: block; color: var(--navy); }
+
+      .strands span { color: var(--ink-soft); font-size: 8.7pt; }
+
+      /* ---------- callouts ---------- */
+      .flat { margin: 0; padding: 0 0 0 14px; }
+      .flat li { margin-bottom: 3px; }
+
+      .note {
+        padding: 8px 11px;
+        border: 1px solid var(--rule);
+        border-left: 3px solid var(--navy);
+        border-radius: 4px;
+        background: #fafbfd;
+      }
+
+      .note.warn { border-left-color: #9a6407; background: #fdfaf3; }
+
+      /* ---------- footer ---------- */
+      .foot {
+        margin-top: auto;
+        padding-top: 7px;
+        border-top: 1px solid var(--rule);
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 7.6pt;
+        color: var(--ink-soft);
+      }
+
+      .foot .status { font-family: var(--mono); font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; }
+
+      /* ---------- print ---------- */
+      @page { size: Letter; margin: 0; }
+
+      @media print {
+        body { background: #ffffff; }
+        .sheet { width: auto; min-height: 10.6in; margin: 0; box-shadow: none; }
+        .masthead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <header class="masthead">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#0b1420" stroke="#2b3d5c" stroke-width="1" />
+          <rect x="5.5" y="9" width="21" height="14" rx="2.5" fill="none" stroke="#3d5174" stroke-width="1.5" />
+          <path d="M9 13.5h6M9 17h9" stroke="#6b7c95" stroke-width="1.6" stroke-linecap="round" />
+          <circle cx="21.5" cy="19.5" r="6.5" fill="#0b1420" />
+          <circle cx="21.5" cy="19.5" r="5.75" fill="none" stroke="#1f8a5f" stroke-width="1.6" />
+          <path d="M18.9 19.6l1.9 1.9 3.8-4" fill="none" stroke="#6ee7b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div>
+          <h1>AI Learner Licence</h1>
+          <p class="sub">Grade 7–8 · 25–35 minutes · browser-based</p>
+        </div>
+        <p class="url"><span>Try it</span>ai-learners-license.vercel.app</p>
+      </header>
+
+      <p class="lede">
+        A short course that teaches students to judge when AI helps their learning, and when it
+        quietly does the learning for them.
+      </p>
+
+      <div class="cols">
+        <div>
+          <section>
+            <h2>What it is</h2>
+            <p>
+              Four modules and a final challenge, finished in one class period. It runs in any browser
+              on a Chromebook, phone or laptop. Nothing to install, no accounts to provision, no licence fee.
+            </p>
+            <p>
+              Students work through realistic school situations and decide what they would do, rather
+              than memorising a rulebook.
+            </p>
+          </section>
+
+          <section>
+            <h2>Why it exists</h2>
+            <p>
+              Students are already using these tools. A blanket ban teaches them to hide it; an open
+              door teaches them nothing. Neither builds the skill they need, which is telling help from
+              substitution in the moment.
+            </p>
+            <p>
+              The course is built on one idea: <strong>AI can help you learn, but it should not do the
+              learning for you.</strong> The same action can be fine on one assignment and wrong on the
+              next, so the course teaches the judgment call rather than a fixed list of permissions.
+            </p>
+          </section>
+        </div>
+
+        <div>
+          <section>
+            <h2>What students work through</h2>
+            <table>
+              <tbody>
+                <tr>
+                  <td class="n">01</td>
+                  <td class="t">Where's the Line?</td>
+                  <td class="g">support vs. replacement</td>
+                </tr>
+                <tr>
+                  <td class="n">02</td>
+                  <td class="t">Make AI Coach You</td>
+                  <td class="g">tutor, coach, practice partner</td>
+                </tr>
+                <tr>
+                  <td class="n">03</td>
+                  <td class="t">Sounds Right. Check It.</td>
+                  <td class="g">verification and bias</td>
+                </tr>
+                <tr>
+                  <td class="n">04</td>
+                  <td class="t">Know the Boundaries</td>
+                  <td class="g">permission, privacy, responsibility</td>
+                </tr>
+                <tr>
+                  <td class="n">05</td>
+                  <td class="t">Final Challenge</td>
+                  <td class="g">12 mixed situations, 10 needed to pass</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>Why a pass means something</h2>
+            <p>
+              A mastery check, not a click-through. Each module draws 5 questions from a bank of 8 and
+              needs <strong>4 of 5</strong>; every miss must be corrected before the student continues.
+              The final needs <strong>10 of 12</strong>, drawn from a bank of 20.
+            </p>
+            <p>
+              Answer order is shuffled rather than authored, so the correct choice falls evenly across
+              all four positions instead of clustering, and a retry reshuffles it alongside a different
+              set of questions.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <section class="checks">
+        <h2 style="border-bottom-color: var(--green); margin-bottom: 8px">
+          The five checks students carry out of the course
+        </h2>
+        <ol>
+          <li>
+            <span class="q">Allowed?</span>
+            <span class="d">Is AI allowed for this task, or this part of the task?</span>
+          </li>
+          <li>
+            <span class="q">Goal?</span>
+            <span class="d">What am I supposed to learn or practise?</span>
+          </li>
+          <li>
+            <span class="q">Still me?</span>
+            <span class="d">Am I still doing that thinking and making the decisions?</span>
+          </li>
+          <li>
+            <span class="q">Check it?</span>
+            <span class="d">Does anything AI told me need confirming somewhere reliable?</span>
+          </li>
+          <li>
+            <span class="q">Private?</span>
+            <span class="d">Am I sharing anything I should keep private?</span>
+          </li>
+        </ol>
+        <p class="after">
+          Five questions, not a policy document. They transfer to any subject and any tool, and a staff
+          could adopt them without adopting the course.
+        </p>
+      </section>
+
+      <div class="cols" style="margin-top: 10px">
+        <div>
+          <section>
+            <h2>How this is AI literacy</h2>
+            <p style="margin-bottom: 6px">
+              Not prompt-writing. Four transferable judgments, each built by the module beside it.
+            </p>
+            <ul class="strands">
+              <li>
+                <b>Knowing when a tool fits the task</b>
+                <span>Recognising what a task is meant to teach, and whether a shortcut skips exactly
+                  that. <em>Modules 01, 02</em></span>
+              </li>
+              <li>
+                <b>Evaluating output instead of trusting it</b>
+                <span>Treating a confident answer as a claim to check, and noticing a one-sided one.
+                  <em>Module 03</em></span>
+              </li>
+              <li>
+                <b>Protecting private information</b>
+                <span>Their own, and other people's, which students reliably find harder.
+                  <em>Module 04</em></span>
+              </li>
+              <li>
+                <b>Owning what they submit</b>
+                <span>Understanding that "AI told me" transfers no responsibility.
+                  <em>Module 04, Final</em></span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div>
+          <section>
+            <h2>Privacy and data</h2>
+            <p>
+              The course collects nothing. No accounts, no sign-in. It never asks for or stores a name,
+              email address, student ID or school account, and does no tracking.
+            </p>
+            <p>
+              Progress stays in the browser on the device and is never transmitted. The course makes no
+              call to any AI service, so nothing a student types reaches a third party.
+            </p>
+          </section>
+
+          <section>
+            <h2>What it does not claim</h2>
+            <div class="note warn">
+              <p style="margin-bottom: 4px">
+                The licence a student earns is a <strong>classroom learning credential, not an official
+                school or district certification</strong>.
+              </p>
+              <p style="margin: 0">
+                It is not permission to use AI. The licence itself says so, and carries the line
+                <em>"Valid only when AI use is permitted by your teacher."</em> A teacher's instructions
+                for any given assignment always come first.
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <footer class="foot">
+        <p class="status">Status · v1.1 pilot, not yet run with a class</p>
+        <p>AI Learner Licence · ai-learners-license.vercel.app</p>
+      </footer>
+    </div>
+  </body>
+</html>
